@@ -47,6 +47,7 @@ class sfDoctrineDatabase extends sfDatabase
     }
 
     $paths[] = realpath(__DIR__ . '/../config/doctrine');
+    $paths[] = realpath(sfConfig::get('sf_config_dir').'/doctrine');
 
     $enabledPlugins = $configuration->getPlugins();
     foreach ($configuration->getAllPluginPaths() as $plugin => $path)
