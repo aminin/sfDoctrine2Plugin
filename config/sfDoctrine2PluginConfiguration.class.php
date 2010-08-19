@@ -36,19 +36,19 @@ class sfDoctrine2PluginConfiguration extends sfPluginConfiguration
       $this->dispatcher->connect('debug.web.load_panels', array('sfWebDebugPanelDoctrine', 'listenToAddPanelEvent'));
     }
 
-    require_once __DIR__.'/../lib/vendor/doctrine/lib/Doctrine/Common/ClassLoader.php';
-
-    $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions');
-    $classLoader->setIncludePath(__DIR__.'/../lib/vendor/active_entity');
-    $classLoader->register();
-
-    $classLoader = new \Doctrine\Common\ClassLoader('Doctrine');
-    $classLoader->setIncludePath(__DIR__.'/../lib/vendor/doctrine/lib');
-    $classLoader->register();
-
-    $classLoader = new \Doctrine\Common\ClassLoader('Symfony');
-    $classLoader->setIncludePath(__DIR__.'/../lib/vendor/doctrine/lib/vendor');
-    $classLoader->register();
+    // Autoloading
+    $libDir = sfConfig::get('sf_lib_dir') . '/vendor/doctrine2/lib';
+    $classes = array(
+        'Doctrine\Common' => $libDir . '/vendor/doctrine-common/lib',
+        'Doctrine\DBAL'   => $libDir . '/vendor/doctrine-dbal/lib',
+        'Doctrine\ORM'    => $libDir,
+        'Symfony'         => $libDir . '/vendor',
+    );
+    require_once $libDir .'/vendor/doctrine-common/lib/Doctrine/Common/ClassLoader.php';
+    foreach ($classes as $ns => $path) {
+        $classLoader = new \Doctrine\Common\ClassLoader($ns, $path);
+        $classLoader->register();
+    }
 
     $this->dispatcher->connect('component.method_not_found', array($this, 'componentMethodNotFound'));
   }
