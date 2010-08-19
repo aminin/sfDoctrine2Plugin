@@ -3,8 +3,10 @@ use Symfony\Components\Console\Output\OutputInterface;
 
 class sfDoctrineCliPrinter implements OutputInterface
 {
-  protected $formatter;
-  protected $dispatcher;
+  protected
+    $formatter,
+    $dispatcher,
+    $level = Symfony\Components\Console\Output\Output::VERBOSITY_VERBOSE;
 
   public function setFormatter($formatter)
   {
@@ -45,9 +47,14 @@ class sfDoctrineCliPrinter implements OutputInterface
     $this->write($messages, true, $type);
   }
 
-
   public function setVerbosity($level)
   {
+    $this->level = $level;
+  }
+
+  public function getVerbosity()
+  {
+    return $this->level;
   }
 
   public function setDecorated($decorated)
