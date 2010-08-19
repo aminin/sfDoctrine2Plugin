@@ -38,9 +38,10 @@ class sfDoctrineDatabase extends sfDatabase
     $configuration = sfProjectConfiguration::getActive();
 
     $paths = array();
-    if ($schema)
-    {
+    if ($schema) {
       $paths[] = $schema;
+    } else {
+      $paths[] = sfConfig::get('sf_config_dir') . '/doctrine';
     }
 
     $paths[] = realpath(__DIR__ . '/../config/doctrine');

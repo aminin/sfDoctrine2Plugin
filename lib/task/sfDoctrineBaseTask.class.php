@@ -16,35 +16,119 @@
  * @subpackage doctrine
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @author     Russell Flynn <russ@eatmymonkeydust.com>
- * @version    SVN: $Id: sfDoctrineBaseTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
+
 abstract class sfDoctrineBaseTask extends sfBaseTask
 {
-  static protected $databaseManagers = array();
+    protected
+        $optionNames   = array(),
+        $argumentNames = array();
 
-  protected function prepareDoctrineCliArguments(array $arguments, array $keys = array())
-  {
-    $args = array();
-    if ($keys)
+    static protected $databaseManagers = array();
+
+
+    /**
+     * Prepare arguments
+     *
+     * @param  array $arguments
+     * @param  array $keys
+     * @return array
+     */
+    protected function prepareDoctrineCliArguments(array $arguments, array $keys)
     {
-      foreach ($keys as $key)
-      {
-        if (isset($arguments[$key]) && $value = $arguments[$key])
-        {
-          $args[] = '--'.$key.'='.implode(',', (array) $value);
-        }
-      }
-    } else {
-      foreach ($arguments as $key => $value)
-      {
-        if ($value !== null)
-        {
-          $args[] = '--'.$key.'='.implode(',', (array) $value);
-        }
-      }
+        return array_intersect_key($arguments, array_flip($keys));
     }
-    return $args;
-  }
+
+
+    /**
+     * Prepare options
+     *
+     * @param  array $arguments
+     * @param  array $keys
+     * @return array
+     */
+    protected function prepareDoctrineCliOptions(array $options, array $keys)
+    {
+        $result = array();
+        $options = array_intersect_key($options, array_flip($keys));
+
+        if ($options) {
+            $optionsKeys = array_keys($options);
+            foreach ($optionsKeys as &$key) {
+                $key = '--'.$key;
+            }
+            $result = array_combine($optionsKeys, $options);
+        }
+
+        return $result;
+    }
+
+
+    /**
+     * Inport task definition
+     *
+     * @param  $command
+     * @return void
+     */
+    protected function importTaskDefinition(Symfony\Components\Console\Command\Command $command, array $ignoreKeys = array())
+    {
+        $definition = $command->getDefinition();
+
+        if ($ignoreKeys) {
+            $ignoreKeys = array_flip($ignoreKeys);
+        }
+
+        // Options
+        foreach ($definition->getOptions() as $item) {
+
+            if ($ignoreKeys && isset($ignoreKeys[$item->getName()])) {
+                continue;
+            }
+
+            $default = $item->getDefault();
+            if ($item->isParameterRequired()) {
+                $mode = sfCommandOption::PARAMETER_REQUIRED;
+            } else if ($item->isParameterOptional()) {
+                $mode = sfCommandOption::PARAMETER_OPTIONAL;
+            } else if ($item->isArray()) {
+                $mode = sfCommandOption::IS_ARRAY;
+            } else {
+                $mode = sfCommandOption::PARAMETER_NONE;
+                $default = null;
+            }
+
+            $this->addOption(
+                $item->getName(), $item->getShortcut(), $mode, $item->getDescription(), $default
+            );
+            $this->optionNames[] = $item->getName();
+        }
+
+        // Arguments
+        foreach ($definition->getArguments() as $item) {
+
+            if ($ignoreKeys && isset($ignoreKeys[$item->getName()])) {
+                continue;
+            }
+
+            if ($item->isRequired()) {
+                $mode = sfCommandArgument::REQUIRED;
+            } else if ($item->isArray()) {
+                $mode = sfCommandArgument::IS_ARRAY;
+            } else {
+                $mode = sfCommandArgument::OPTIONAL;
+            }
+
+            $this->addArgument(
+                $item->getName(), $mode, $item->getDescription(), $item->getDefault()
+            );
+            $this->argumentNames[] = $item->getName();
+        }
+
+
+        $this->briefDescription = $command->getDescription();
+        $this->detailedDescription = $command->getHelp();
+    }
+
 
   protected function getCli()
   {
@@ -88,7 +172,7 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
     $args = array($task);
     $args = array_merge($args, $arguments);
 
-    $input = new \Symfony\Components\Console\Input\StringInput(join(" ", $args));
+    $input = new \Symfony\Components\Console\Input\ArrayInput($args);
 
     $output = new sfDoctrineCliPrinter();
     $output->setFormatter($this->formatter);
@@ -132,4 +216,5 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
 
     return $database->getEntityManager();
   }
+
 }
