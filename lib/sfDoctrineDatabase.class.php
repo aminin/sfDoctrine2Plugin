@@ -9,8 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use \Doctrine\ORM\Mapping\Driver\YamlDriver,
-    \DoctrineExtensions\ActiveEntity;
+use \Doctrine\ORM\Mapping\Driver\YamlDriver;
 
 /**
  * Represents a single Symfony Doctrine Database connection
@@ -61,8 +60,6 @@ class sfDoctrineDatabase extends sfDatabase
     $config->setProxyDir(sfConfig::get('sf_lib_dir') . '/Proxies');
     $config->setProxyNamespace('Proxies');
 
-    $configuration = sfProjectConfiguration::getActive();
-
     if (sfConfig::get('sf_debug'))
     {
       $config->setSqlLogger(new sfDoctrineSqlLogger($configuration->getEventDispatcher()));
@@ -85,7 +82,6 @@ class sfDoctrineDatabase extends sfDatabase
       $configuration->configureEntityManager($this->em);
     }
 
-    ActiveEntity::setEntityManager($this->em);
   }
 
   public function connect()
