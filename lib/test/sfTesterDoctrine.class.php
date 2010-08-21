@@ -41,7 +41,7 @@ class sfTesterDoctrine extends sfTester
    *
    * @return sfTestFunctionalBase|sfTester
    */
-  public function check($em, $model, $qb, $value = true)
+  public function check(\Doctrine\ORM\EntityManager $em, $model, $qb, $value = true)
   {
     if (null === $qb)
     {
@@ -59,7 +59,7 @@ class sfTesterDoctrine extends sfTester
       {
         if (null === $condition)
         {
-          $query->andWhere('a.'.$field.' IS NULL');
+          $qb->andWhere('a.'.$field.' IS NULL');
           continue;
         }
 
