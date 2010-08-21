@@ -23,6 +23,8 @@ class sfDoctrineDatabase extends sfDatabase
 {
   protected $em;
 
+  static private $conn;
+
   public function initialize($parameters = array())
   {
     parent::initialize($parameters);
@@ -76,7 +78,10 @@ class sfDoctrineDatabase extends sfDatabase
       $configuration->$method($config);
     }
 
-    $this->em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);
+    if (!self::$conn) {
+        self::$conn = \Doctrine\DBAL\DriverManager::getConnection($connectionOptions, $config, new \Doctrine\Common\EventManager);
+    }
+    $this->em = \Doctrine\ORM\EntityManager::create(self::$conn, $config);
 
     if (method_exists($configuration, 'configureEntityManager'))
     {
@@ -87,12 +92,12 @@ class sfDoctrineDatabase extends sfDatabase
 
   public function connect()
   {
-    return $this->em->getConnection()->connect();
+    return self::$conn->connect();
   }
 
   public function shutdown()
   {
-    return $this->em->getConnection()->close();
+    return self::$conn->close();
   }
 
   public function getEntityManager()
