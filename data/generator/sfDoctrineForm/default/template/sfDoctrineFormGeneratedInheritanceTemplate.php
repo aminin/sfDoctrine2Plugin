@@ -1,4 +1,6 @@
 [?php
+##NAMESPACE##
+
 
 /**
  * <?php echo $this->formName ?> form base class.
@@ -8,15 +10,15 @@
  * @author     ##AUTHOR_NAME##
  * @version    SVN: $Id$
  */
-class Base<?php echo $this->formName ?>Form extends <?php echo $this->getFormClassToExtend() . "\n" ?>
+class Base<?php echo $this->formName ?>Form extends \<?php echo $this->getFormClassToExtend() . "\n" ?>
 {
   protected function setupInheritance()
   {
     parent::setupInheritance();
 
 <?php foreach ($this->getManyToManyRelations() as $relation): ?>
-    $this->widgetSchema['<?php echo $this->underscore($relation['alias']) ?>_list'] = new sfWidgetFormDoctrineChoice($this->em, array('multiple' => true, 'model' => '<?php echo $relation['model'] ?>'));
-    $this->validatorSchema['<?php echo $this->underscore($relation['alias']) ?>_list'] = new sfValidatorDoctrineChoice($this->em, array('multiple' => true, 'model' => '<?php echo $relation['model'] ?>', 'required' => false));
+    $this->widgetSchema['<?php echo $this->underscore($relation['alias']) ?>_list'] = new \sfWidgetFormDoctrineChoice($this->em, array('multiple' => true, 'model' => '<?php echo $relation['model'] ?>'));
+    $this->validatorSchema['<?php echo $this->underscore($relation['alias']) ?>_list'] = new \sfValidatorDoctrineChoice($this->em, array('multiple' => true, 'model' => '<?php echo $relation['model'] ?>', 'required' => false));
 
 <?php endforeach; ?>
     $this->widgetSchema->setNameFormat('<?php echo $this->underscore($this->modelName) ?>[%s]');

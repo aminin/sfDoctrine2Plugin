@@ -1,5 +1,7 @@
 [?php
 
+##NAMESPACE##
+
 /**
  * <?php echo $this->formName ?> form.
  *
@@ -8,7 +10,7 @@
  * @author     ##AUTHOR_NAME##
  * @version    SVN: $Id$
  */
-class <?php echo $this->formName ?>Form extends Plugin<?php echo $this->formName ?>Form
+class <?php echo $this->formName ?>Form extends \Plugin<?php echo $this->formName ?>Form
 {
   public function configure()
   {

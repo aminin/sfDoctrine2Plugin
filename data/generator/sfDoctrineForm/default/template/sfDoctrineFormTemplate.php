@@ -1,4 +1,8 @@
 [?php
+##NAMESPACE##
+
+require_once(__DIR__.'/base/Base<?php echo $this->formName ?>Form.php');
+
 
 /**
  * <?php echo $this->formName ?> form.

@@ -67,14 +67,18 @@ EOF;
 
     $properties = parse_ini_file(sfConfig::get('sf_config_dir').DIRECTORY_SEPARATOR.'properties.ini', true);
 
+    $ns = trim(sfConfig::get('sf_generator_form_ns'), '\\/');
+
     $constants = array(
       'PROJECT_NAME' => isset($properties['symfony']['name']) ? $properties['symfony']['name'] : 'symfony',
-      'AUTHOR_NAME'  => isset($properties['symfony']['author']) ? $properties['symfony']['author'] : 'Your name here'
+      'AUTHOR_NAME'  => isset($properties['symfony']['author']) ? $properties['symfony']['author'] : 'Your name here',
+      'NAMESPACE'    => $ns ? "namespace {$ns};": '',
     );
 
     // customize php and yml files
+    $rootDir = sfConfig::get('sf_generator_form_dir', sfConfig::get('sf_lib_dir').'/form/doctrine');
     $finder = sfFinder::type('file')->name('*.php');
-    $this->getFilesystem()->replaceTokens($finder->in(sfConfig::get('sf_lib_dir').'/form/'), '##', '##', $constants);
+    $this->getFilesystem()->replaceTokens($finder->in($rootDir), '##', '##', $constants);
 
     $this->reloadAutoload();
   }

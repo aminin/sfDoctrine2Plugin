@@ -18,7 +18,6 @@
  * @subpackage generator
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineFormGenerator.class.php 8512 2008-04-17 18:06:12Z fabien $
  */
 class sfDoctrineFormGenerator extends sfGenerator
 {
@@ -89,13 +88,15 @@ class sfDoctrineFormGenerator extends sfGenerator
 
     $metadatas = $this->loadMetadatas();
 
+    $rootDir = sfConfig::get('sf_generator_form_dir', sfConfig::get('sf_lib_dir').'/form/doctrine');
+
     // create the project base class for all forms
-    $file = sfConfig::get('sf_lib_dir').'/form/doctrine/BaseFormDoctrine.class.php';
+    $file = $rootDir . '/BaseFormDoctrine.php';
     if (!file_exists($file))
     {
-      if (!is_dir(sfConfig::get('sf_lib_dir').'/form/doctrine/base'))
+      if (!is_dir($rootDir.'/base'))
       {
-        mkdir(sfConfig::get('sf_lib_dir').'/form/doctrine/base', 0777, true);
+        mkdir($rootDir.'/base', 0777, true);
       }
 
       file_put_contents($file, $this->evalTemplate('sfDoctrineFormBaseTemplate.php'));
@@ -103,14 +104,20 @@ class sfDoctrineFormGenerator extends sfGenerator
 
     $pluginPaths = $this->generatorManager->getConfiguration()->getAllPluginPaths();
 
+
     // create a form class for every Doctrine class
     foreach ($metadatas as $metadata)
     {
       $this->metadata = $metadata;
       $this->modelName = $metadata->name;
-			$this->formName = str_replace('\\', '', $this->modelName);
-
-      $baseDir = sfConfig::get('sf_lib_dir') . '/form/doctrine';
+      $ns = trim(sfConfig::get('sf_generator_form_ns'), '\\/');
+      if ($ns) {
+        $names = explode('\\', $this->modelName);
+        $this->formName = array_pop($names);
+      } else {
+        $this->formName = str_replace('\\', '', $this->modelName);
+      }
+      $baseDir =$rootDir;
 
       $isPluginModel = $this->isPluginModel($metadata->name);
       if ($isPluginModel)
@@ -124,7 +131,7 @@ class sfDoctrineFormGenerator extends sfGenerator
         mkdir($baseDir.'/base', 0777, true);
       }
 
-      $path = $baseDir.'/base/Base'.str_replace('\\', '', $metadata->name).'Form.class.php';
+      $path = $baseDir.'/base/Base'.$this->formName.'Form.php';
       $dir = dirname($path);
       if (!is_dir($dir))
       {
@@ -134,10 +141,10 @@ class sfDoctrineFormGenerator extends sfGenerator
 
       if ($isPluginModel)
       {
-        $path = $pluginPaths[$pluginName].'/lib/form/doctrine/Plugin'.$metadata->name.'Form.class.php';
+        $path = $pluginPaths[$pluginName].'/lib/form/doctrine/Plugin'.$this->formName.'Form.php';
         if (!file_exists($path))
         {
-          $dir = dirname($path);  
+          $dir = dirname($path);
           if (!is_dir($dir))
           {
             mkdir($dir, 0777, true);
@@ -145,8 +152,7 @@ class sfDoctrineFormGenerator extends sfGenerator
           file_put_contents($path, $this->evalTemplate('sfDoctrineFormPluginTemplate.php'));
         }
       }
-      $path = $baseDir.'/'.$metadata->name.'Form.class.php';
-      $path = str_replace('\\', '', $path);
+      $path = $baseDir.'/'.$this->formName.'Form.php';
       $dir = dirname($path);
       if (!is_dir($dir))
       {

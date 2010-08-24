@@ -1,4 +1,6 @@
 [?php
+##NAMESPACE##
+
 
 /**
  * <?php echo $this->formName ?> form base class.
@@ -8,45 +10,45 @@
  * @author     ##AUTHOR_NAME##
  * @version    SVN: $Id$
  */
-class Base<?php echo $this->formName ?>Form extends <?php echo $this->getFormClassToExtend() . "\n" ?>
+class Base<?php echo $this->formName ?>Form extends \<?php echo $this->getFormClassToExtend() . "\n" ?>
 {
   public function setup()
   {
     $this->setWidgets(array(
 <?php foreach ($this->getColumns() as $column): ?>
-      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new <?php echo $this->getWidgetClassForColumn($column) ?>(<?php echo $this->getWidgetOptionsForColumn($column) ?>),
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new \<?php echo $this->getWidgetClassForColumn($column) ?>(<?php echo $this->getWidgetOptionsForColumn($column) ?>),
 <?php endforeach; ?>
 <?php foreach ($this->getManyToManyRelations() as $relation): ?>
-      '<?php echo $this->underscore($relation['alias']) ?>_list'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($this->underscore($relation['alias']).'_list')) ?> => new sfWidgetFormDoctrineChoice($this->em, array('multiple' => true, 'model' => '<?php echo $relation['table']->getOption('name') ?>')),
+      '<?php echo $this->underscore($relation['alias']) ?>_list'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($this->underscore($relation['alias']).'_list')) ?> => new \sfWidgetFormDoctrineChoice($this->em, array('multiple' => true, 'model' => '<?php echo $relation['table']->getOption('name') ?>')),
 <?php endforeach; ?>
     ));
 
     $this->setValidators(array(
 <?php foreach ($this->getColumns() as $column): ?>
-      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new <?php echo $this->getValidatorClassForColumn($column) ?>(<?php echo $this->getValidatorOptionsForColumn($column) ?>),
+      '<?php echo $column->getFieldName() ?>'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($column->getFieldName())) ?> => new \<?php echo $this->getValidatorClassForColumn($column) ?>(<?php echo $this->getValidatorOptionsForColumn($column) ?>),
 <?php endforeach; ?>
 <?php foreach ($this->getManyToManyRelations() as $relation): ?>
-      '<?php echo $this->underscore($relation['alias']) ?>_list'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($this->underscore($relation['alias']).'_list')) ?> => new sfValidatorDoctrineChoice($this->em, array('multiple' => true, 'model' => '<?php echo $relation['table']->getOption('name') ?>', 'required' => false)),
+      '<?php echo $this->underscore($relation['alias']) ?>_list'<?php echo str_repeat(' ', $this->getColumnNameMaxLength() - strlen($this->underscore($relation['alias']).'_list')) ?> => new \sfValidatorDoctrineChoice($this->em, array('multiple' => true, 'model' => '<?php echo $relation['table']->getOption('name') ?>', 'required' => false)),
 <?php endforeach; ?>
     ));
 
 <?php if ($uniqueColumns = $this->getUniqueColumnNames()): ?>
     $this->validatorSchema->setPostValidator(
 <?php if (count($uniqueColumns) > 1): ?>
-      new sfValidatorAnd(array(
+      new \sfValidatorAnd(array(
 <?php foreach ($uniqueColumns as $uniqueColumn): ?>
-        new sfValidatorDoctrineUnique(array('model' => '<?php echo $this->modelName ?>', 'column' => array('<?php echo implode("', '", $uniqueColumn) ?>'))),
+        new \sfValidatorDoctrineUnique(array('model' => '<?php echo $this->modelName ?>', 'column' => array('<?php echo implode("', '", $uniqueColumn) ?>'))),
 <?php endforeach; ?>
       ))
 <?php else: ?>
-      new sfValidatorDoctrineUnique(array('model' => '<?php echo $this->modelName ?>', 'column' => array('<?php echo implode("', '", $uniqueColumns[0]) ?>')))
+      new \sfValidatorDoctrineUnique(array('model' => '<?php echo $this->modelName ?>', 'column' => array('<?php echo implode("', '", $uniqueColumns[0]) ?>')))
 <?php endif; ?>
     );
 
 <?php endif; ?>
     $this->widgetSchema->setNameFormat('<?php echo $this->underscore($this->modelName) ?>[%s]');
 
-    $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
+    $this->errorSchema = new \sfValidatorErrorSchema($this->validatorSchema);
 
     $this->setupInheritance();
 
