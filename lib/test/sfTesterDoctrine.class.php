@@ -41,7 +41,7 @@ class sfTesterDoctrine extends sfTester
    *
    * @return sfTestFunctionalBase|sfTester
    */
-  public function check(\Doctrine\ORM\EntityManager $em, $model, $qb, $value = true)
+  public function check(\Doctrine\ORM\EntityManager $em, $model, $qb, $value = true, &$objects = null)
   {
     if (null === $qb)
     {
