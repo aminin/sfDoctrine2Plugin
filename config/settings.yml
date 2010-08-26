@@ -1,0 +1,6 @@
+all:
+  .settings:
+    generator_proxy_dir: %SF_LIB_DIR%/Proxy
+    generator_proxy_ns:  Proxy
+    generator_form_dir:  %SF_LIB_DIR%/lib/form/doctrine
+    generator_form_ns:   ~

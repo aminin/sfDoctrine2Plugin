@@ -50,6 +50,7 @@ EOF;
    */
   protected function execute($arguments = array(), $options = array())
   {
-    $this->callDoctrineCli('orm:generate-proxies');
+    $arguments = array('dest-path' => sfConfig::get('sf_generator_proxy_dir'));
+    $this->callDoctrineCli('orm:generate-proxies', $arguments);
   }
 }
