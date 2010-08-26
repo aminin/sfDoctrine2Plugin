@@ -88,7 +88,7 @@ class sfDoctrineFormGenerator extends sfGenerator
 
     $metadatas = $this->loadMetadatas();
 
-    $rootDir = sfConfig::get('sf_generator_form_dir', sfConfig::get('sf_lib_dir').'/form/doctrine');
+    $rootDir = sfConfig::get('sf_generator_form_dir');
 
     // create the project base class for all forms
     $file = $rootDir . '/BaseFormDoctrine.php';

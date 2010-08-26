@@ -76,7 +76,7 @@ EOF;
     );
 
     // customize php and yml files
-    $rootDir = sfConfig::get('sf_generator_form_dir', sfConfig::get('sf_lib_dir').'/form/doctrine');
+    $rootDir = sfConfig::get('sf_generator_form_dir');
     $finder = sfFinder::type('file')->name('*.php');
     $this->getFilesystem()->replaceTokens($finder->in($rootDir), '##', '##', $constants);
 
