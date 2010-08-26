@@ -140,11 +140,12 @@ class sfDoctrineRoute extends sfObjectRoute
 
     foreach ($this->getRealVariables() as $variable)
     {
-			if ($value = $object->$variable)
-			{
-      	$parameters[$variable] = $value;
-    	}
-		}
+      $getter = 'get'.$variable;
+      if ($value = $object->$getter())
+      {
+        $parameters[$variable] = $value;
+      }
+    }
     return $parameters;
   }
 }
