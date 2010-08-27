@@ -9,16 +9,20 @@ class sfDoctrineSqlLogger implements Doctrine\DBAL\Logging\SQLLogger
     $this->dispatcher = $dispatcher;
   }
 
-  public function logSQL($sql, array $params = null, $executionMS = null)
+  public function startQuery($sql, array $params = null, array $types = null)
   {
   	$this->dispatcher->notify(new sfEvent($this, 'application.log', array(sprintf('query : %s - (%s)', $sql, join(', ', self::fixParams($params))))));
   }
 
+  public function stopQuery()
+  {
+  }
+
   /**
    * Fixes query parameters for logging.
-   * 
+   *
    * @param  array $params
-   * 
+   *
    * @return array
    */
   static public function fixParams($params)
