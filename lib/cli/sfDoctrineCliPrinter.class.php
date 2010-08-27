@@ -1,12 +1,12 @@
 <?php
-use Symfony\Components\Console\Output\OutputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class sfDoctrineCliPrinter implements OutputInterface
 {
   protected
     $formatter,
     $dispatcher,
-    $level = Symfony\Components\Console\Output\Output::VERBOSITY_VERBOSE;
+    $level = Symfony\Component\Console\Output\Output::VERBOSITY_VERBOSE;
 
   public function setFormatter($formatter)
   {
