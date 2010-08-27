@@ -37,14 +37,14 @@ class sfDoctrine2PluginConfiguration extends sfPluginConfiguration
     }
 
     // Autoloading
-    $libDir = sfConfig::get('sf_lib_dir') . '/vendor/doctrine2/lib';
+    $libDir = __DIR__ . '/../lib/vendor/doctrine2';
     $classes = array(
-        'Doctrine\Common' => $libDir . '/vendor/doctrine-common/lib',
-        'Doctrine\DBAL'   => $libDir . '/vendor/doctrine-dbal/lib',
-        'Doctrine\ORM'    => $libDir,
-        'Symfony'         => $libDir . '/vendor',
+        'Doctrine\Common' => $libDir . '/Common/lib',
+        'Doctrine\DBAL'   => $libDir . '/DBAL/lib',
+        'Doctrine\ORM'    => $libDir . '/ORM/lib',
+        'Symfony'         => $libDir . '/ORM/lib/vendor',
     );
-    require_once $libDir .'/vendor/doctrine-common/lib/Doctrine/Common/ClassLoader.php';
+    require_once $libDir .'/Common/lib/Doctrine/Common/ClassLoader.php';
     foreach ($classes as $ns => $path) {
         $classLoader = new \Doctrine\Common\ClassLoader($ns, $path);
         $classLoader->register();

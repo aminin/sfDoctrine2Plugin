@@ -6,10 +6,8 @@ Install the plugin as Git submodule:
 
     $ git submodule add git://github.com/maxim-oleinik/sfDoctrine2Plugin.git plugins/sfDoctrine2Plugin
 
-Install Doctrine2 as Git submodule:
-
-    $ git submodule add git://github.com/doctrine/doctrine2.git lib/vendor/doctrine
-    $ cd lib/vendor/doctrine
+    // Init plugins submodules
+    $ cd plugins/sfDoctrine2Plugin/lib/vendor/doctrine2
     $ git submodule update --init
 
 Now you just need to enable the plugin in your ProjectConfiguration:
@@ -129,7 +127,7 @@ Build models, forms, filters, database and load data fixtures.
 
 ## Updating Schema
 
-Updating your schema is just a matter of changing your mapping information in 
+Updating your schema is just a matter of changing your mapping information in
 `config/doctrine` and then running the following command:
 
     $ php symfony doctrine:build --all-classes --and-update-schema
