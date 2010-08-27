@@ -15,7 +15,6 @@
  * @package    symfony
  * @subpackage doctrine
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrine2PluginConfiguration.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
 class sfDoctrine2PluginConfiguration extends sfPluginConfiguration
 {
@@ -23,16 +22,21 @@ class sfDoctrine2PluginConfiguration extends sfPluginConfiguration
   {
     sfConfig::set('sf_orm', 'doctrine');
 
+    // Generator config
+    // Do not overwrite user defined values
+    sfConfig::set('sf_generator_proxy_dir', sfConfig::get('sf_generator_proxy_dir', sfConfig::get('sf_lib_dir').'/Proxy'));
+    sfConfig::set('sf_generator_proxy_ns',  sfConfig::get('sf_generator_proxy_ns', 'Proxy'));
+    sfConfig::set('sf_generator_form_dir',  sfConfig::get('sf_generator_form_dir', sfConfig::get('sf_lib_dir').'/form/doctrine'));
+    sfConfig::set('sf_generator_form_ns',   sfConfig::get('sf_generator_form_ns', ''));
+
     if (!sfConfig::get('sf_admin_module_web_dir'))
     {
       sfConfig::set('sf_admin_module_web_dir', '/sfDoctrine2Plugin');
     }
 
-
     if (sfConfig::get('sf_web_debug'))
     {
       require_once __DIR__.'/../lib/debug/sfWebDebugPanelDoctrine.class.php';
-
       $this->dispatcher->connect('debug.web.load_panels', array('sfWebDebugPanelDoctrine', 'listenToAddPanelEvent'));
     }
 

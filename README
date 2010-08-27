@@ -19,6 +19,18 @@ Now you just need to enable the plugin in your ProjectConfiguration:
       {
         $this->enablePlugins('sfDoctrine2Plugin');
       }
+
+      /**
+       * Setup sfDoctrine2Plugin
+       * Customize generator properties
+       */
+      public function setupPlugins()
+      {
+        sfConfig::set('sf_generator_proxy_dir', sfConfig::get('sf_lib_dir').'/App/Model/Proxy');
+        sfConfig::set('sf_generator_proxy_ns',  'App\Model\Proxy');
+        sfConfig::set('sf_generator_form_dir',  sfConfig::get('sf_lib_dir').'/App/Form');
+        sfConfig::set('sf_generator_form_ns',   'App\Form');
+      }
     }
 
 ## Configure Databases
