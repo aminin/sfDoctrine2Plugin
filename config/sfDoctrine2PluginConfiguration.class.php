@@ -18,6 +18,8 @@
  */
 class sfDoctrine2PluginConfiguration extends sfPluginConfiguration
 {
+  private static $initializedAutoload = false;
+
   public function initialize()
   {
     sfConfig::set('sf_orm', 'doctrine');
@@ -41,17 +43,20 @@ class sfDoctrine2PluginConfiguration extends sfPluginConfiguration
     }
 
     // Autoloading
-    $libDir = __DIR__ . '/../lib/vendor/doctrine2';
-    $classes = array(
-        'Doctrine\Common' => $libDir . '/Common/lib',
-        'Doctrine\DBAL'   => $libDir . '/DBAL/lib',
-        'Doctrine\ORM'    => $libDir . '/ORM/lib',
-        'Symfony'         => $libDir . '/ORM/lib/vendor',
-    );
-    require_once $libDir .'/Common/lib/Doctrine/Common/ClassLoader.php';
-    foreach ($classes as $ns => $path) {
-        $classLoader = new \Doctrine\Common\ClassLoader($ns, $path);
-        $classLoader->register();
+    if (!self::$initializedAutoload) {
+        $libDir = __DIR__ . '/../lib/vendor/doctrine2';
+        $classes = array(
+            'Doctrine\Common' => $libDir . '/Common/lib',
+            'Doctrine\DBAL'   => $libDir . '/DBAL/lib',
+            'Doctrine\ORM'    => $libDir . '/ORM/lib',
+            'Symfony'         => $libDir . '/ORM/lib/vendor',
+        );
+        require_once $libDir .'/Common/lib/Doctrine/Common/ClassLoader.php';
+        foreach ($classes as $ns => $path) {
+            $classLoader = new \Doctrine\Common\ClassLoader($ns, $path);
+            $classLoader->register();
+        }
+        self::$initializedAutoload = true;
     }
 
     $this->dispatcher->connect('component.method_not_found', array($this, 'componentMethodNotFound'));
