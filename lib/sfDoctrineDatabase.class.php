@@ -32,7 +32,6 @@ class sfDoctrineDatabase extends sfDatabase
     $schema = $this->getParameter('schema');
     $connectionName = $this->getParameter('name');
     $connectionOptions = $this->getParameter('options');
-    $plugins = (array) $this->getParameter('plugins');
 
     $config = new \Doctrine\ORM\Configuration();
     $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
@@ -52,14 +51,16 @@ class sfDoctrineDatabase extends sfDatabase
     $enabledPlugins = $configuration->getPlugins();
     foreach ($configuration->getAllPluginPaths() as $plugin => $path)
     {
-      if (!in_array($plugin, $enabledPlugins) || !in_array($plugin, $plugins))
+      if (!in_array($plugin, $enabledPlugins))
       {
         continue;
       }
-      $paths[] = $path.'/config/doctrine';
+      $pluginPath = $path.'/config/doctrine';
+      if (is_dir($pluginPath)) {
+          $paths[] = $path.'/config/doctrine';
+      }
     }
     $paths = array_unique($paths);
-
     $config->setMetadataDriverImpl(new YamlDriver($paths));
 
     // Proxy
