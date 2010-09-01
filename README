@@ -157,3 +157,14 @@ Updating your schema is just a matter of changing your mapping information in
         // ...
       }
     }
+
+## Migrations
+
+See http://www.doctrine-project.org/projects/migrations/2.0/docs/reference/introduction/en
+Symfony tasks:
+
+    $ ./symfony list migrations
+
+Custom config
+
+    $ cp ./plugins/sfDoctrine2Plugin/config/migrations.yml config/migrations.yml
