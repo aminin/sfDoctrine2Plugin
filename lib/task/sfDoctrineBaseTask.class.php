@@ -16,6 +16,7 @@
  * @subpackage doctrine
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @author     Russell Flynn <russ@eatmymonkeydust.com>
+ * @author     Maxim Oleinik <maxim.oleinik@gmail.com>
  */
 
 abstract class sfDoctrineBaseTask extends sfBaseTask
@@ -68,6 +69,7 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
      * Inport task definition
      *
      * @param  $command
+     * @param  array $ignoreKeys
      * @return void
      */
     protected function importTaskDefinition(Symfony\Component\Console\Command\Command $command, array $ignoreKeys = array())
@@ -124,9 +126,21 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
             $this->argumentNames[] = $item->getName();
         }
 
+        $this->importTaskDescription($command);
+    }
 
+
+    /**
+     * Inport task description
+     *
+     * @param  $command
+     * @return void
+     */
+    protected function importTaskDescription(Symfony\Component\Console\Command\Command $command)
+    {
         $this->briefDescription = $command->getDescription();
-        $this->detailedDescription = $command->getHelp();
+        $help = str_replace('%command.full_name%', $command->getFullName(), strip_tags($command->getHelp()));
+        $this->detailedDescription = $help;
     }
 
 
@@ -135,6 +149,7 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
     $helperSet = new \Symfony\Component\Console\Helper\HelperSet(array(
         'em' => new \Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper($this->getEntityManager()),
         'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($this->getEntityManager()->getConnection()),
+        'dialog' => new \Symfony\Component\Console\Helper\DialogHelper(),
     ));
 
     $cli = new \Symfony\Component\Console\Application('Doctrine Command Line Interface', Doctrine\Common\Version::VERSION);
@@ -160,6 +175,14 @@ abstract class sfDoctrineBaseTask extends sfBaseTask
       new \Doctrine\ORM\Tools\Console\Command\GenerateProxiesCommand(),
       new \Doctrine\ORM\Tools\Console\Command\ConvertMappingCommand(),
       new \Doctrine\ORM\Tools\Console\Command\RunDqlCommand(),
+
+      // Migrations Commands
+      new \Doctrine\DBAL\Migrations\Tools\Console\Command\DiffCommand(),
+      new \Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand(),
+      new \Doctrine\DBAL\Migrations\Tools\Console\Command\GenerateCommand(),
+      new \Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand(),
+      new \Doctrine\DBAL\Migrations\Tools\Console\Command\StatusCommand(),
+      new \Doctrine\DBAL\Migrations\Tools\Console\Command\VersionCommand()
     ));
 
     return $cli;

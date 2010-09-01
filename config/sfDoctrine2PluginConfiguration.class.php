@@ -47,6 +47,7 @@ class sfDoctrine2PluginConfiguration extends sfPluginConfiguration
         $libDir = __DIR__ . '/../lib/vendor/doctrine2';
         $classes = array(
             'Doctrine\Common' => $libDir . '/Common/lib',
+            'Doctrine\DBAL\Migrations' => $libDir . '/Migrations/lib',
             'Doctrine\DBAL'   => $libDir . '/DBAL/lib',
             'Doctrine\ORM'    => $libDir . '/ORM/lib',
             'Symfony'         => $libDir . '/ORM/lib/vendor',
