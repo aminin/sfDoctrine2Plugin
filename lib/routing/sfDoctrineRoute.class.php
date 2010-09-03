@@ -60,13 +60,12 @@ class sfDoctrineRoute extends sfObjectRoute
     {
       $em = $databaseManager->getDatabase($name)->getEntityManager();
       $cmf = $em->getMetadataFactory();
-      if ($cmf->hasMetadataFor($modelName))
+      if ($this->metadata = $cmf->getMetadataFor($modelName))
       {
-				$this->repository = $em->getRepository($modelName);
-				$this->em = $em;
-				$this->cmf = $em->getMetadataFactory();
-				$this->metadata = $this->cmf->getMetadataFor($modelName);
-       	break;
+        $this->repository = $em->getRepository($modelName);
+        $this->em = $em;
+        $this->cmf = $cmf;
+        break;
       }
     }
 
