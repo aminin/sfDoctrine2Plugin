@@ -542,7 +542,11 @@ abstract class sfFormDoctrine extends sfFormObject
       $getMethod = "get".$key;
       if (method_exists($obj, $getMethod) && is_callable(array($obj, $getMethod)))
       {
-        $valueArray[$key] = call_user_func(array($obj, $getMethod));
+        $valueArray[$key] = $value = call_user_func(array($obj, $getMethod));
+      }
+
+      if ($value instanceof \DateTime) {
+        $valueArray[$key] = $value->format(DATE_ISO8601);
       }
     }
 
