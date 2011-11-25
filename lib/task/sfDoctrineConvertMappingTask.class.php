@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Convert Doctrine mapping information between various supported formats.
@@ -18,7 +18,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @subpackage doctrine
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  */
-class sfDoctrineConvertMappingTask extends sfDoctrineBaseTask
+class sfDoctrineConvertMappingTask extends sfDoctrine2BaseTask
 {
     /**
      * @see sfTask
@@ -35,7 +35,7 @@ class sfDoctrineConvertMappingTask extends sfDoctrineBaseTask
         $this->importTaskDefinition($task);
 
         $this->aliases = array();
-        $this->namespace = 'doctrine';
+        $this->namespace = 'doctrine2';
         $this->name = 'convert-mapping';
     }
 

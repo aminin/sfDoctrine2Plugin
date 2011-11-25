@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Generate Doctrine proxy classes
@@ -20,7 +20,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Russell Flynn <russ@eatmymonkeydust.com>
  * @version    SVN: $Id: sfDoctrineVersionTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineGenerateProxiesTask extends sfDoctrineBaseTask
+class sfDoctrineGenerateProxiesTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -28,14 +28,14 @@ class sfDoctrineGenerateProxiesTask extends sfDoctrineBaseTask
   protected function configure()
   {
     $this->aliases = array();
-    $this->namespace = 'doctrine';
+    $this->namespace = 'doctrine2';
     $this->name = 'generate-proxies';
     $this->briefDescription = 'Generate the Doctrine proxy classes';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:version|INFO] generates the Doctrine proxy clases using your configured proxy directory
+The [doctrine2:version|INFO] generates the Doctrine proxy clases using your configured proxy directory
 
-  [./symfony doctrine:generate-proxies|INFO]
+  [./symfony doctrine2:generate-proxies|INFO]
 
 EOF;
   }

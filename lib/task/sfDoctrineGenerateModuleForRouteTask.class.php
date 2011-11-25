@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Generates a Doctrine module for a route definition.
@@ -18,7 +18,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @version    SVN: $Id: sfDoctrineGenerateModuleForRouteTask.class.php 12161 2008-10-13 07:42:25Z fabien $
  */
-class sfDoctrineGenerateModuleForRouteTask extends sfDoctrineBaseTask
+class sfDoctrineGenerateModuleForRouteTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -38,14 +38,14 @@ class sfDoctrineGenerateModuleForRouteTask extends sfDoctrineBaseTask
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'dev'),
     ));
 
-    $this->namespace = 'doctrine';
+    $this->namespace = 'doctrine2';
     $this->name = 'generate-module-for-route';
     $this->briefDescription = 'Generates a Doctrine module for a route definition';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:generate-module-for-route|INFO] task generates a Doctrine module for a route definition:
+The [doctrine2:generate-module-for-route|INFO] task generates a Doctrine module for a route definition:
 
-  [./symfony doctrine:generate-module-for-route frontend article|INFO]
+  [./symfony doctrine2:generate-module-for-route frontend article|INFO]
 
 The task creates a module in the [%frontend%|COMMENT] application for the
 [%article%|COMMENT] route definition found in [routing.yml|COMMENT].
@@ -76,7 +76,7 @@ EOF;
     $module = $routeOptions['module'];
     $model = $routeOptions['model'];
 
-    // execute the doctrine:generate-module task
+    // execute the doctrine2:generate-module task
     $task = new sfDoctrineGenerateModuleTask($this->dispatcher, $this->formatter);
     $task->setCommandApplication($this->commandApplication);
     $task->setConfiguration($this->configuration);

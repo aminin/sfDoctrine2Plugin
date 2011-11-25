@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Create classes for the current model.
@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  */
-class sfDoctrineBuildModelTask extends sfDoctrineBaseTask
+class sfDoctrineBuildModelTask extends sfDoctrine2BaseTask
 {
     /**
      * @see sfTask
@@ -30,7 +30,7 @@ class sfDoctrineBuildModelTask extends sfDoctrineBaseTask
         $this->importTaskDefinition($command, $ignore = array('dest-path'));
 
         $this->aliases = array('doctrine-build-model');
-        $this->namespace = 'doctrine';
+        $this->namespace = 'doctrine2';
         $this->name = 'build-model';
     }
 

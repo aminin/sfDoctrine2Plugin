@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Update schema task
@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id: sfDoctrineUpdateSchemaTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineUpdateSchemaTask extends sfDoctrineBaseTask
+class sfDoctrineUpdateSchemaTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -33,14 +33,14 @@ class sfDoctrineUpdateSchemaTask extends sfDoctrineBaseTask
     ));
 
     $this->aliases = array();
-    $this->namespace = 'doctrine';
+    $this->namespace = 'doctrine2';
     $this->name = 'update-schema';
     $this->briefDescription = 'Update schema for current model';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:update-schema|INFO] updates schema for the current model:
+The [doctrine2:update-schema|INFO] updates schema for the current model:
 
-  [./symfony doctrine:update-schema|INFO]
+  [./symfony doctrine2:update-schema|INFO]
 
 The task connects to the database and updates all the tables for your schema.
 EOF;

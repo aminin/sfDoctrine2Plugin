@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Base migration task
@@ -18,7 +18,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @subpackage doctrine
  * @author     Maxim Oleinik <maxim.oleinik@gmail.com>
  */
-abstract class sfDoctrineMigrationsBaseTask extends sfDoctrineBaseTask
+abstract class sfDoctrineMigrationsBaseTask extends sfDoctrine2BaseTask
 {
     protected $task;
 

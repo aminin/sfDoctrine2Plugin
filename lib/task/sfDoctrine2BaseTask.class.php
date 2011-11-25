@@ -19,7 +19,7 @@
  * @author     Maxim Oleinik <maxim.oleinik@gmail.com>
  */
 
-abstract class sfDoctrineBaseTask extends sfBaseTask
+abstract class sfDoctrine2BaseTask extends sfBaseTask
 {
     protected
         $optionNames   = array(),

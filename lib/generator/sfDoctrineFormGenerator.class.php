@@ -205,7 +205,7 @@ class sfDoctrineFormGenerator extends sfGenerator
             if ($reflection->isSubClassOf($parent))
             {
               $this->pluginEntities[$modelName] = $pluginName;
-              $generators = Doctrine::getTable($modelName)->getGenerators();
+              $generators = doctrine2::getTable($modelName)->getGenerators();
               foreach ($generators as $generator)
               {
                 $this->pluginEntities[$generator->getOption('className')] = $pluginName;

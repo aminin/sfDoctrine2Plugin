@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Run DQL query task
@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id: sfDoctrineRunDqlTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineRunDqlTask extends sfDoctrineBaseTask
+class sfDoctrineRunDqlTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -37,14 +37,14 @@ class sfDoctrineRunDqlTask extends sfDoctrineBaseTask
     ));
 
     $this->aliases = array();
-    $this->namespace = 'doctrine';
+    $this->namespace = 'doctrine2';
     $this->name = 'run-dql';
     $this->briefDescription = 'Execute a DQL query';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:run-dql|INFO] task executes a DQL:
+The [doctrine2:run-dql|INFO] task executes a DQL:
 
-  [./symfony doctrine:run-dql --dql="SELECT u FROM User u"|INFO]
+  [./symfony doctrine2:run-dql --dql="SELECT u FROM User u"|INFO]
 
 EOF;
   }

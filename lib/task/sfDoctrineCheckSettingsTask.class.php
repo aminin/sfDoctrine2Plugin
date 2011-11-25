@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Check if Doctrine is properly configured for a production environment
@@ -20,7 +20,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Russell Flynn <russ@eatmymonkeydust.com>
  * @version    SVN: $Id: sfDoctrineCreateSchemaTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineCheckSettings extends sfDoctrineBaseTask
+class sfDoctrineCheckSettings extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -28,15 +28,15 @@ class sfDoctrineCheckSettings extends sfDoctrineBaseTask
   protected function configure()
   {
     $this->aliases = array();
-    $this->namespace = 'doctrine';
+    $this->namespace = 'doctrine2';
     $this->name = 'check-settings';
     $this->briefDescription = 'Checks if Doctrine is properly configured for production environment';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:check-settings|INFO] task checks if Doctrine is properly
+The [doctrine2:check-settings|INFO] task checks if Doctrine is properly
 configured for production environment
 
-  [./symfony doctrine:check-settings|INFO]
+  [./symfony doctrine2:check-settings|INFO]
 
 EOF;
   }

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Load data fixtures task
@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id: sfDoctrineLoadDataFixturesTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineLoadDataFixturesTask extends sfDoctrineBaseTask
+class sfDoctrineLoadDataFixturesTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -36,15 +36,15 @@ class sfDoctrineLoadDataFixturesTask extends sfDoctrineBaseTask
       new sfCommandOption('append', null, sfCommandOption::PARAMETER_NONE, 'Don\'t delete current data in the database'),
     ));
 
-    $this->aliases = array('doctrine-data-load', 'doctrine:data-load');
-    $this->namespace = 'doctrine';
+    $this->aliases = array('doctrine2-data-load', 'doctrine2:data-load');
+    $this->namespace = 'doctrine2';
     $this->name = 'load-data-fixtures';
     $this->briefDescription = 'Load data fixtures from a directory or file';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:load-data-fixtures|INFO] task loads data fixtures from a directory or file:
+The [doctrine2:load-data-fixtures|INFO] task loads data fixtures from a directory or file:
 
-  [./symfony doctrine:load-data-fixtures|INFO]
+  [./symfony doctrine2:load-data-fixtures|INFO]
 
 EOF;
   }

@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Generates a Doctrine admin module.
@@ -18,7 +18,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @version    SVN: $Id: sfDoctrineGenerateAdminTask.class.php 12474 2008-10-31 10:41:27Z fabien $
  */
-class sfDoctrineGenerateAdminTask extends sfDoctrineBaseTask
+class sfDoctrineGenerateAdminTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -38,14 +38,14 @@ class sfDoctrineGenerateAdminTask extends sfDoctrineBaseTask
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'dev'),
     ));
 
-    $this->namespace = 'doctrine';
+    $this->namespace = 'doctrine2';
     $this->name = 'generate-admin';
     $this->briefDescription = 'Generates a Doctrine admin module';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:generate-admin|INFO] task generates a Doctrine admin module:
+The [doctrine2:generate-admin|INFO] task generates a Doctrine admin module:
 
-  [./symfony doctrine:generate-admin frontend Article|INFO]
+  [./symfony doctrine2:generate-admin frontend Article|INFO]
 
 The task creates a module in the [%frontend%|COMMENT] application for the
 [%Article%|COMMENT] model.
@@ -54,7 +54,7 @@ The task creates a route for you in the application [routing.yml|COMMENT].
 
 You can also generate a Doctrine admin module by passing a route name:
 
-  [./symfony doctrine:generate-admin frontend article|INFO]
+  [./symfony doctrine2:generate-admin frontend article|INFO]
 
 The task creates a module in the [%frontend%|COMMENT] application for the
 [%article%|COMMENT] route definition found in [routing.yml|COMMENT].
@@ -139,7 +139,7 @@ EOF
     $module = str_replace('\\', '_', $routeOptions['module']);
     $model = $routeOptions['model'];
 
-    // execute the doctrine:generate-module task
+    // execute the doctrine2:generate-module task
     $task = new sfDoctrineGenerateModuleTask($this->dispatcher, $this->formatter);
     $task->setCommandApplication($this->commandApplication);
     $task->setConfiguration($this->configuration);

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Create schema task
@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id: sfDoctrineCreateSchemaTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineCreateSchemaTask extends sfDoctrineBaseTask
+class sfDoctrineCreateSchemaTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -32,15 +32,15 @@ class sfDoctrineCreateSchemaTask extends sfDoctrineBaseTask
       new sfCommandOption('dump-sql', null, sfCommandOption::PARAMETER_NONE, 'Whether to output the generated sql instead of executing'),
     ));
 
-    $this->aliases = array('doctrine-insert-sql', 'doctrine:insert-sql');
-    $this->namespace = 'doctrine';
+    $this->aliases = array('doctrine2-insert-sql', 'doctrine2:insert-sql');
+    $this->namespace = 'doctrine2';
     $this->name = 'create-schema';
     $this->briefDescription = 'Inserts SQL for current model';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:insert-sql|INFO] task creates database tables:
+The [doctrine2:insert-sql|INFO] task creates database tables:
 
-  [./symfony doctrine:insert-sql|INFO]
+  [./symfony doctrine2:insert-sql|INFO]
 
 The task connects to the database and creates tables for all the
 [lib/model/doctrine/*.php|COMMENT] files.

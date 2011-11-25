@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Create filter form classes for the current model.
@@ -18,7 +18,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @version    SVN: $Id: sfDoctrineBuildFiltersTask.class.php 12537 2008-11-01 14:43:27Z fabien $
  */
-class sfDoctrineBuildFiltersTask extends sfDoctrineBaseTask
+class sfDoctrineBuildFiltersTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -32,14 +32,14 @@ class sfDoctrineBuildFiltersTask extends sfDoctrineBaseTask
       new sfCommandOption('filter-dir-name', null, sfCommandOption::PARAMETER_REQUIRED, 'The filter form dir name', 'filter'),
     ));
 
-    $this->namespace = 'doctrine';
+    $this->namespace = 'doctrine2';
     $this->name = 'build-filters';
     $this->briefDescription = 'Creates filter form classes for the current model';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:build-filters|INFO] task creates filter form classes from the schema:
+The [doctrine2:build-filters|INFO] task creates filter form classes from the schema:
 
-  [./symfony doctrine:build-filters|INFO]
+  [./symfony doctrine2:build-filters|INFO]
 
 The task read the schema information in [config/*schema.xml|COMMENT] and/or
 [config/*schema.yml|COMMENT] from the project and all installed plugins.

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Create database task
@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id: sfDoctrineCreateDbTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineCreateDbTask extends sfDoctrineBaseTask
+class sfDoctrineCreateDbTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -31,15 +31,15 @@ class sfDoctrineCreateDbTask extends sfDoctrineBaseTask
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'dev'),
     ));
 
-    $this->aliases = array('doctrine:build-db');
-    $this->namespace = 'doctrine';
+    $this->aliases = array('doctrine2:build-db');
+    $this->namespace = 'doctrine2';
     $this->name = 'create-db';
     $this->briefDescription = 'Create the databases for your configured connections';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:create-db|INFO] task creates the databases for your configured connections:
+The [doctrine2:create-db|INFO] task creates the databases for your configured connections:
 
-  [./symfony doctrine:create-db|INFO]
+  [./symfony doctrine2:create-db|INFO]
 
 EOF;
   }

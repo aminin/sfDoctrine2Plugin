@@ -39,7 +39,7 @@ Sample `databases.yml` for MySQL:
 
     [yml]
     all:
-      doctrine:
+      doctrine2:
         class: sfDoctrineDatabase
         param:
           options:
@@ -52,7 +52,7 @@ Sample `databases.yml` for Sqlite:
 
     [yml]
     all:
-      doctrine:
+      doctrine2:
         class: sfDoctrineDatabase
         param:
           options:
@@ -135,14 +135,14 @@ will be used to persist the entities.
 
 Build models, forms, filters, database and load data fixtures.
 
-    $ php symfony doctrine:build --all --and-load
+    $ php symfony doctrine2:build --all --and-load
 
 ## Updating Schema
 
 Updating your schema is just a matter of changing your mapping information in
 `config/doctrine` and then running the following command:
 
-    $ php symfony doctrine:build --all-classes --and-update-schema
+    $ php symfony doctrine2:build --all-classes --and-update-schema
 
 ## Entity Manager in Actions
 

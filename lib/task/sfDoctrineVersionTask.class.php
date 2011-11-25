@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Check Doctrine version task
@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id: sfDoctrineVersionTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineVersionTask extends sfDoctrineBaseTask
+class sfDoctrineVersionTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -27,14 +27,14 @@ class sfDoctrineVersionTask extends sfDoctrineBaseTask
   protected function configure()
   {
     $this->aliases = array();
-    $this->namespace = 'doctrine';
+    $this->namespace = 'doctrine2';
     $this->name = 'version';
     $this->briefDescription = 'Check which version of Doctrine you are using';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:version|INFO] outputs which version of Doctrine you are using:
+The [doctrine2:version|INFO] outputs which version of Doctrine you are using:
 
-  [./symfony doctrine:version|INFO]
+  [./symfony doctrine2:version|INFO]
 
 EOF;
   }

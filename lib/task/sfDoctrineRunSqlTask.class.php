@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Run SQL query task
@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id: sfDoctrineRunSqlTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineRunSqlTask extends sfDoctrineBaseTask
+class sfDoctrineRunSqlTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -35,14 +35,14 @@ class sfDoctrineRunSqlTask extends sfDoctrineBaseTask
     ));
 
     $this->aliases = array();
-    $this->namespace = 'doctrine';
+    $this->namespace = 'doctrine2';
     $this->name = 'run-sql';
     $this->briefDescription = 'Execute a SQL query or a file of SQL queries';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:run-sql|INFO] task executes a SQL query or a file of SQL queries:
+The [doctrine2:run-sql|INFO] task executes a SQL query or a file of SQL queries:
 
-  [./symfony doctrine:run-sql --sql="SELECT * FROM users"|INFO]
+  [./symfony doctrine2:run-sql --sql="SELECT * FROM users"|INFO]
 
 EOF;
   }

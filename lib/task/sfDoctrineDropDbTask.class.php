@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
+require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
  * Drop database task
@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrineBaseTask.class.php');
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id: sfDoctrineDropDbTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineDropDbTask extends sfDoctrineBaseTask
+class sfDoctrineDropDbTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -33,14 +33,14 @@ class sfDoctrineDropDbTask extends sfDoctrineBaseTask
     ));
 
     $this->aliases = array();
-    $this->namespace = 'doctrine';
+    $this->namespace = 'doctrine2';
     $this->name = 'drop-db';
     $this->briefDescription = 'Drop the databases for your configured connections';
 
     $this->detailedDescription = <<<EOF
-The [doctrine:drop-db|INFO] task drops the databases for your configured connections:
+The [doctrine2:drop-db|INFO] task drops the databases for your configured connections:
 
-  [./symfony doctrine:drop-db|INFO]
+  [./symfony doctrine2:drop-db|INFO]
 
 EOF;
   }
