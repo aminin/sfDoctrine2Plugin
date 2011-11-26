@@ -1,5 +1,5 @@
 DoctrineExtensions\ActiveEntity:
   type: mappedSuperclass
 
-sfDoctrineActiveEntity:
+sfDoctrine2ActiveEntity:
   type: mappedSuperclass

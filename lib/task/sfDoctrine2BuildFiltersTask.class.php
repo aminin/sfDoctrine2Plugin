@@ -58,7 +58,7 @@ EOF;
     $this->logSection('doctrine', 'generating filter form classes');
     $databaseManager = $this->initDBM();
     $generatorManager = new sfGeneratorManager($this->configuration);
-    $generatorManager->generate('sfDoctrineFormFilterGenerator', array(
+    $generatorManager->generate('sfDoctrine2FormFilterGenerator', array(
       'model_dir_name'  => $options['model-dir-name'],
       'filter_dir_name' => $options['filter-dir-name'],
       'database_manager' => $databaseManager,

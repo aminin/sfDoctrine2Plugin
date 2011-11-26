@@ -1,7 +1,7 @@
 <?php
 use Symfony\Component\Console\Output\OutputInterface;
 
-class sfDoctrineCliPrinter implements OutputInterface
+class sfDoctrine2CliPrinter implements OutputInterface
 {
   protected
     $formatter,

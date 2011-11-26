@@ -10,7 +10,7 @@
  */
 
 /**
- * sfDoctrineRoute represents a route that is bound to a Doctrine class.
+ * sfDoctrine2Route represents a route that is bound to a Doctrine class.
  *
  * A Doctrine route can represent a single Doctrine object or a list of objects.
  *
@@ -18,9 +18,9 @@
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineRoute.class.php 11475 2008-09-12 11:07:23Z fabien $
+ * @version    SVN: $Id: sfDoctrine2Routee.class.php 11475 2008-09-12 11:07:23Z fabien $
  */
-class sfDoctrineRoute extends sfObjectRoute
+class sfDoctrine2Route extends sfObjectRoute
 {
   protected
     $query = null;

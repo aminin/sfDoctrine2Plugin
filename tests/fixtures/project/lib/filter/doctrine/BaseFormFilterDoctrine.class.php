@@ -8,7 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id$
  */
-abstract class BaseFormFilterDoctrine extends sfFormFilterDoctrine
+abstract class BaseFormFilterDoctrine2 extends sfFormFilterDoctrine2
 {
   public function setup()
   {

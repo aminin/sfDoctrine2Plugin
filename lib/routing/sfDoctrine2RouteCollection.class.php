@@ -16,10 +16,10 @@
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineRouteCollection.class.php 11475 2008-09-12 11:07:23Z fabien $
+ * @version    SVN: $Id: sfDoctrine2RouteCollectionn.class.php 11475 2008-09-12 11:07:23Z fabien $
  */
-class sfDoctrineRouteCollection extends sfObjectRouteCollection
+class sfDoctrine2RouteCollection extends sfObjectRouteCollection
 {
   protected
-    $routeClass = 'sfDoctrineRoute';
+    $routeClass = 'sfDoctrine2Route';
 }

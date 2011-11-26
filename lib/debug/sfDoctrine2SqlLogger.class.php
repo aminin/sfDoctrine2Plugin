@@ -1,6 +1,6 @@
 <?php
 
-class sfDoctrineSqlLogger implements Doctrine\DBAL\Logging\SQLLogger
+class sfDoctrine2SqlLogger implements Doctrine\DBAL\Logging\SQLLogger
 {
   protected $dispatcher;
 

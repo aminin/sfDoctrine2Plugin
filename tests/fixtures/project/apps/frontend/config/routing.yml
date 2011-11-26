@@ -1,5 +1,5 @@
 models\user_users:
-  class: sfDoctrineRouteCollection
+  class: sfDoctrine2RouteCollection
   options:
     model:                Entities\User
     module:               users

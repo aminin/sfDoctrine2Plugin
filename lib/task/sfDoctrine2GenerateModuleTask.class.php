@@ -98,7 +98,7 @@ EOF;
     $tmpDir = sfConfig::get('sf_cache_dir').DIRECTORY_SEPARATOR.'tmp'.DIRECTORY_SEPARATOR.md5(uniqid(rand(), true));
     $databaseManager = $this->initDBM();
 		$generatorManager = new sfGeneratorManager($this->configuration, $tmpDir);
-    $generatorManager->generate('sfDoctrineGenerator', array(
+    $generatorManager->generate('sfDoctrine2Generator', array(
       'model_class'           => $arguments['model'],
       'moduleName'            => $arguments['module'],
       'theme'                 => $options['theme'],

@@ -8,7 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id$
  */
-class BaseEntitiesGroupFormFilter extends BaseFormFilterDoctrine
+class BaseEntitiesGroupFormFilter extends BaseFormFilterDoctrine2
 {
   public function setup()
   {

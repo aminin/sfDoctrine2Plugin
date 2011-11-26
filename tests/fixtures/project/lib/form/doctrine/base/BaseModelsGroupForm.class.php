@@ -8,7 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id$
  */
-class BaseEntitiesGroupForm extends BaseFormDoctrine
+class BaseEntitiesGroupForm extends BaseFormDoctrine2
 {
   public function setup()
   {
@@ -18,7 +18,7 @@ class BaseEntitiesGroupForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'   => new sfValidatorDoctrineChoice($this->em, array('model' => 'Entities\Group', 'column' => 'id', 'required' => false)),
+      'id'   => new sfValidatorDoctrine2Choice($this->em, array('model' => 'Entities\Group', 'column' => 'id', 'required' => false)),
       'name' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 

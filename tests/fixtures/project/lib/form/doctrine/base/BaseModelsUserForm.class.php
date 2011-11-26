@@ -8,7 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id$
  */
-class BaseEntitiesUserForm extends BaseFormDoctrine
+class BaseEntitiesUserForm extends BaseFormDoctrine2
 {
   public function setup()
   {
@@ -20,7 +20,7 @@ class BaseEntitiesUserForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'       => new sfValidatorDoctrineChoice($this->em, array('model' => 'Entities\User', 'column' => 'id', 'required' => false)),
+      'id'       => new sfValidatorDoctrine2Choice($this->em, array('model' => 'Entities\User', 'column' => 'id', 'required' => false)),
       'isActive' => new sfValidatorBoolean(array('required' => false)),
       'username' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'password' => new sfValidatorString(array('max_length' => 255, 'required' => false)),

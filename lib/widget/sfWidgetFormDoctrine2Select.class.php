@@ -10,15 +10,14 @@
  */
 
 /**
- * sfWidgetFormDoctrineSelect represents a select HTML tag for a model.
+ * sfWidgetFormDoctrine2Select represents a select HTML tag for a model.
  *
  * @package    symfony
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfWidgetFormDoctrineSelect.class.php 7746 2008-03-05 12:10:27Z fabien $
  */
-class sfWidgetFormDoctrineSelect extends sfWidgetFormSelect
+class sfWidgetFormDoctrine2Select extends sfWidgetFormSelect
 {
   protected $em;
 

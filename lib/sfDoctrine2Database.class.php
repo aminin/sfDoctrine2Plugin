@@ -17,9 +17,8 @@ use \Doctrine\ORM\Mapping\Driver\YamlDriver;
  * @package    symfony
  * @subpackage doctrine
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineDatabase.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineDatabase extends sfDatabase
+class sfDoctrine2Database extends sfDatabase
 {
   protected $em;
 
@@ -69,7 +68,7 @@ class sfDoctrineDatabase extends sfDatabase
 
     if (sfConfig::get('sf_debug'))
     {
-      $config->setSqlLogger(new sfDoctrineSqlLogger($configuration->getEventDispatcher()));
+      $config->setSqlLogger(new sfDoctrine2SqlLogger($configuration->getEventDispatcher()));
     }
 
     $method = sprintf('configureDoctrineConnection%s', $connectionName);

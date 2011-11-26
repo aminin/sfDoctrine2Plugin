@@ -10,15 +10,14 @@
  */
 
 /**
- * sfWidgetFormDoctrineChoice represents a choice widget for a model.
+ * sfWidgetFormDoctrine2Choice represents a choice widget for a model.
  *
  * @package    symfony
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfWidgetFormDoctrineChoice.class.php 11540 2008-09-14 15:23:55Z fabien $
  */
-class sfWidgetFormDoctrineChoice extends sfWidgetFormChoice
+class sfWidgetFormDoctrine2Choice extends sfWidgetFormChoice
 {
   protected $em;
 

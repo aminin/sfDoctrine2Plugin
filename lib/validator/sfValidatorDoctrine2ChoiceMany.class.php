@@ -10,15 +10,14 @@
  */
 
 /**
- * sfValidatorDoctrineChoiceMany validates than an array of values is in the array of the existing rows of a table.
+ * sfValidatorDoctrine2ChoiceMany validates than an array of values is in the array of the existing rows of a table.
  *
  * @package    symfony
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfValidatorDoctrineChoiceMany.class.php 7902 2008-03-15 13:17:33Z fabien $
  */
-class sfValidatorDoctrineChoiceMany extends sfValidatorDoctrineChoice
+class sfValidatorDoctrine2ChoiceMany extends sfValidatorDoctrine2Choice
 {
   /**
    * Configures the current validator.

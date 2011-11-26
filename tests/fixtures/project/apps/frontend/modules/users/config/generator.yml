@@ -1,5 +1,5 @@
 generator:
-  class: sfDoctrineGenerator
+  class: sfDoctrine2Generator
   param:
     model_class:           Entities\User
     theme:                 admin

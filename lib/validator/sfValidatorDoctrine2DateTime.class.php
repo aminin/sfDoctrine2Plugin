@@ -1,11 +1,11 @@
 <?php
 
 /**
- * sfValidatorDoctrineDateTime extends standart validator to return DateTime object
+ * sfValidatorDoctrine2DateTime extends standart validator to return DateTime object
  *
  * @author Maxim Oleinik <maxim.oleinik@gmail.com>
  */
-class sfValidatorDoctrineDateTime extends sfValidatorDateTime
+class sfValidatorDoctrine2DateTime extends sfValidatorDateTime
 {
   /**
    * @see sfValidatorBase

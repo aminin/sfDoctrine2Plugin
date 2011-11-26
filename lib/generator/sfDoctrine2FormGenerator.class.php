@@ -19,7 +19,7 @@
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  */
-class sfDoctrineFormGenerator extends sfGenerator
+class sfDoctrine2FormGenerator extends sfGenerator
 {
   /**
    * Array of all the loaded models
@@ -91,7 +91,7 @@ class sfDoctrineFormGenerator extends sfGenerator
     $rootDir = sfConfig::get('sf_generator_form_dir');
 
     // create the project base class for all forms
-    $file = $rootDir . '/BaseFormDoctrine.php';
+    $file = $rootDir . '/BaseFormDoctrine2.php';
     if (!file_exists($file))
     {
       if (!is_dir($rootDir.'/base'))
@@ -581,7 +581,7 @@ class sfDoctrineFormGenerator extends sfGenerator
   }
 
   /**
-   * Get array of sfDoctrineColumn objects
+   * Get array of sfDoctrine2Column objects
    *
    * @return array $columns
    */
@@ -594,7 +594,7 @@ class sfDoctrineFormGenerator extends sfGenerator
 			{
 				continue;
 			}
-      $columns[] = new sfDoctrineColumn($name, $fieldMapping, $this->metadata, $this);
+      $columns[] = new sfDoctrine2Column($name, $fieldMapping, $this->metadata, $this);
     }
 
     foreach ($this->metadata->associationMappings as $name => $associationMapping)
@@ -605,7 +605,7 @@ class sfDoctrineFormGenerator extends sfGenerator
         $fieldMapping['fieldName'] = $associationMapping->joinColumnFieldNames[$associationMapping->joinColumns[0]['name']];
         $fieldMapping['columName'] = $associationMapping->joinColumns[0]['name'];
         $fieldMapping['type'] = 'integer';
-        $columns[] = new sfDoctrineColumn($fieldMapping['fieldName'], $fieldMapping, $this->metadata, $this);
+        $columns[] = new sfDoctrine2Column($fieldMapping['fieldName'], $fieldMapping, $this->metadata, $this);
       }
     }
 
@@ -722,6 +722,6 @@ class sfDoctrineFormGenerator extends sfGenerator
    */
   public function getFormClassToExtend()
   {
-    return null === ($model = $this->getParentModel()) ? 'BaseFormDoctrine' : sprintf('%sForm', $model);
+    return null === ($model = $this->getParentModel()) ? 'BaseFormDoctrine2' : sprintf('%sForm', $model);
   }
 }

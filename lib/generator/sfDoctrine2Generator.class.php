@@ -14,9 +14,9 @@
  * @package    symfony
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfDoctrineGenerator.class.php 12507 2008-10-31 18:26:58Z fabien $
+ * @version    SVN: $Id: sfDoctrine2Generatorr.class.php 12507 2008-10-31 18:26:58Z fabien $
  */
-class sfDoctrineGenerator extends sfModelGenerator
+class sfDoctrine2Generator extends sfModelGenerator
 {
   protected
     $databaseManager = null;
@@ -288,7 +288,7 @@ class sfDoctrineGenerator extends sfModelGenerator
   }
 
   /**
-   * Get array of sfDoctrineColumn objects
+   * Get array of sfDoctrine2Column objects
    *
    * @return array $columns
    */
@@ -301,7 +301,7 @@ class sfDoctrineGenerator extends sfModelGenerator
 			{
 				continue;
 			}
-      $columns[$name] = new sfDoctrineColumn($name, $fieldMapping, $this->metadata, $this);
+      $columns[$name] = new sfDoctrine2Column($name, $fieldMapping, $this->metadata, $this);
     }
 
     return $columns;

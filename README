@@ -40,7 +40,7 @@ Sample `databases.yml` for MySQL:
     [yml]
     all:
       doctrine2:
-        class: sfDoctrineDatabase
+        class: sfDoctrine2Database
         param:
           options:
             driver: pdo_mysql
@@ -53,7 +53,7 @@ Sample `databases.yml` for Sqlite:
     [yml]
     all:
       doctrine2:
-        class: sfDoctrineDatabase
+        class: sfDoctrine2Database
         param:
           options:
             driver: pdo_sqlite

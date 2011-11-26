@@ -18,7 +18,7 @@
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @version    SVN: $Id: sfDoctrineAdminColumn.class.php 12356 2008-10-23 21:54:50Z Jonathan.Wage $
  */
-class sfDoctrineColumn implements ArrayAccess
+class sfDoctrine2Column implements ArrayAccess
 {
   /**
    * Array mapping Doctrine column types to the native symfony type

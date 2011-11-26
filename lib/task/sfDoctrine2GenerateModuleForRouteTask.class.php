@@ -67,7 +67,7 @@ EOF;
 
     $routeOptions = $routes[$arguments['route']]->getOptions();
 
-    if (!$routes[$arguments['route']] instanceof sfDoctrineRouteCollection)
+    if (!$routes[$arguments['route']] instanceof sfDoctrine2RouteCollection)
     {
       throw new sfCommandException(sprintf('The route "%s" is not a Doctrine collection route.', $arguments['route']));
     }

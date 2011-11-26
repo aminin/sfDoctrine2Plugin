@@ -2,9 +2,9 @@
 
 namespace Entities;
 
-use sfDoctrineActiveEntity;
+use sfDoctrine2ActiveEntity;
 
-class Group extends sfDoctrineActiveEntity
+class Group extends sfDoctrine2ActiveEntity
 {
   protected $id;
   protected $name;

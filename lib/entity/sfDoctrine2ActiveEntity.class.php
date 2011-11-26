@@ -2,7 +2,7 @@
 
 use DoctrineExtensions\ActiveEntity;
 
-abstract class sfDoctrineActiveEntity extends \DoctrineExtensions\ActiveEntity
+abstract class sfDoctrine2ActiveEntity extends \DoctrineExtensions\ActiveEntity
 {
   public function isNew()
   {

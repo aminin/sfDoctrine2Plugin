@@ -10,20 +10,19 @@
  */
 
 /**
- * sfWidgetFormDoctrineSelectMany represents a select HTML tag for a model where you can select multiple values.
+ * sfWidgetFormDoctrine2Choice represents a choice widget for a model.
  *
  * @package    symfony
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfWidgetFormDoctrineSelectMany.class.php 7147 2008-01-22 11:11:01Z fabien $
  */
-class sfWidgetFormDoctrineSelectMany extends sfWidgetFormDoctrineSelect
+class sfWidgetFormDoctrine2ChoiceMany extends sfWidgetFormDoctrine2Choice
 {
   /**
    * Constructor.
    *
-   * @see sfWidgetFormDoctrineSelect
+   * @see sfWidgetFormDoctrine2Choice
    */
   protected function configure($options = array(), $attributes = array())
   {

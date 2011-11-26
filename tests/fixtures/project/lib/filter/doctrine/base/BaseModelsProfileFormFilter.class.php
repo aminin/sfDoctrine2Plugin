@@ -8,22 +8,22 @@
  * @author     Your name here
  * @version    SVN: $Id$
  */
-class BaseEntitiesProfileFormFilter extends BaseFormFilterDoctrine
+class BaseEntitiesProfileFormFilter extends BaseFormFilterDoctrine2
 {
   public function setup()
   {
     $this->setWidgets(array(
       'firstName' => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'lastName'  => new sfWidgetFormFilterInput(array()),
-      'userId'    => new sfWidgetFormDoctrineChoice($this->em, array('model' => 'Entities\User', 'add_empty' => true)),
-      'userId'    => new sfWidgetFormDoctrineChoice($this->em, array('model' => 'Entities\User', 'add_empty' => true)),
+      'userId'    => new sfWidgetFormDoctrine2Choice($this->em, array('model' => 'Entities\User', 'add_empty' => true)),
+      'userId'    => new sfWidgetFormDoctrine2Choice($this->em, array('model' => 'Entities\User', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'firstName' => new sfValidatorPass(array('required' => false)),
       'lastName'  => new sfValidatorPass(array('required' => false)),
-      'userId'    => new sfValidatorDoctrineChoice($this->em, array('required' => false, 'model' => 'Entities\User', 'column' => 'userId')),
-      'userId'    => new sfValidatorDoctrineChoice($this->em, array('required' => false, 'model' => 'Entities\User', 'column' => 'userId')),
+      'userId'    => new sfValidatorDoctrine2Choice($this->em, array('required' => false, 'model' => 'Entities\User', 'column' => 'userId')),
+      'userId'    => new sfValidatorDoctrine2Choice($this->em, array('required' => false, 'model' => 'Entities\User', 'column' => 'userId')),
     ));
 
     $this->widgetSchema->setNameFormat('models_profile_filters[%s]');

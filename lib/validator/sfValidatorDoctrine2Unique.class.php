@@ -10,9 +10,9 @@
  */
 
 /**
- * sfValidatorDoctrineUnique validates that the uniqueness of a column.
+ * sfValidatorDoctrine2Unique validates that the uniqueness of a column.
  *
- * Warning: sfValidatorDoctrineUnique is susceptible to race conditions.
+ * Warning: sfValidatorDoctrine2Unique is susceptible to race conditions.
  * To avoid this issue, wrap the validation process and the model saving
  * inside a transaction.
  *
@@ -21,9 +21,8 @@
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @author     Russell Flynn    <russ@eatmymonkeydust.com>
- * @version    SVN: $Id: sfValidatorDoctrineUnique.class.php 8807 2008-05-06 14:12:28Z fabien $
  */
-class sfValidatorDoctrineUnique extends sfValidatorSchema
+class sfValidatorDoctrine2Unique extends sfValidatorSchema
 {
   protected $em;
 

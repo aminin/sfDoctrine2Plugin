@@ -197,7 +197,7 @@ abstract class sfDoctrine2BaseTask extends sfBaseTask
 
     $input = new \Symfony\Component\Console\Input\ArrayInput($args);
 
-    $output = new sfDoctrineCliPrinter();
+    $output = new sfDoctrine2CliPrinter();
     $output->setFormatter($this->formatter);
     $output->setDispatcher($this->dispatcher);
 

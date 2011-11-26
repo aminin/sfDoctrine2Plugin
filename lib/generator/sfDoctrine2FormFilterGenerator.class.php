@@ -16,9 +16,9 @@
  * @package    symfony
  * @subpackage generator
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfDoctrineFormFilterGenerator.class.php 11675 2008-09-19 15:21:38Z fabien $
+ * @version    SVN: $Id: sfDoctrine2FormFilterGenerator.class.phpp 11675 2008-09-19 15:21:38Z fabien $
  */
-class sfDoctrineFormFilterGenerator extends sfDoctrineFormGenerator
+class sfDoctrine2FormFilterGenerator extends sfDoctrine2FormGenerator
 {
   /**
    * Initializes the current sfGenerator instance.
@@ -57,7 +57,7 @@ class sfDoctrineFormFilterGenerator extends sfDoctrineFormGenerator
     $metadatas = $this->loadMetadatas();
 
     // create the project base class for all forms
-    $file = sfConfig::get('sf_lib_dir').'/filter/doctrine/BaseFormFilterDoctrine.class.php';
+    $file = sfConfig::get('sf_lib_dir').'/filter/doctrine/BaseFormFilterDoctrine2.class.php';
     if (!file_exists($file))
     {
       if (!is_dir(sfConfig::get('sf_lib_dir').'/filter/doctrine/base'))
@@ -357,6 +357,6 @@ class sfDoctrineFormFilterGenerator extends sfDoctrineFormGenerator
    */
   public function getFormClassToExtend()
   {
-    return null === ($model = $this->getParentModel()) ? 'BaseFormFilterDoctrine' : sprintf('%sFormFilter', $model);
+    return null === ($model = $this->getParentModel()) ? 'BaseFormFilterDoctrine2' : sprintf('%sFormFilter', $model);
   }
 }

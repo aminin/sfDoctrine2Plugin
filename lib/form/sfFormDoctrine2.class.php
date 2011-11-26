@@ -15,11 +15,11 @@
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @author     Russell Flynn <russ@eatmymonkeydust.com>
- * @version    SVN: $Id: sfFormDoctrine.class.php 7845 2008-03-12 22:36:14Z fabien $
+ * @version    SVN: $Id: sfFormDoctrine22.class.php 7845 2008-03-12 22:36:14Z fabien $
  */
 
 /**
- * sfFormDoctrine is the base class for forms based on Doctrine objects.
+ * sfFormDoctrine2 is the base class for forms based on Doctrine objects.
  *
  * This class extends BaseForm, a class generated automatically with each new project.
  *
@@ -28,9 +28,8 @@
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  * @author     Russell Flynn <russ@eatmymonkeydust.com>
- * @version    SVN: $Id: sfFormDoctrine.class.php 7845 2008-03-12 22:36:14Z fabien $
  */
-abstract class sfFormDoctrine extends sfFormObject
+abstract class sfFormDoctrine2 extends sfFormObject
 {
   protected
     $isNew  = null,
@@ -317,7 +316,7 @@ abstract class sfFormDoctrine extends sfFormObject
         continue;
       }
 
-      if ($form instanceof sfFormDoctrine)
+      if ($form instanceof sfFormDoctrine2)
       {
         $form->updateObject($values[$name]);
       }
@@ -472,7 +471,7 @@ abstract class sfFormDoctrine extends sfFormObject
 
     foreach ($forms as $form)
     {
-      if ($form instanceof sfFormDoctrine)
+      if ($form instanceof sfFormDoctrine2)
       {
         $em->persist($form->getObject());
         $form->saveEmbeddedForms($em);
@@ -505,7 +504,7 @@ abstract class sfFormDoctrine extends sfFormObject
 
     foreach ($this->embeddedForms as $name => $form)
     {
-      if ($form instanceof sfFormDoctrine)
+      if ($form instanceof sfFormDoctrine2)
       {
         $form->updateDefaultsFromObject();
         $defaults[$name] = $form->getDefaults();

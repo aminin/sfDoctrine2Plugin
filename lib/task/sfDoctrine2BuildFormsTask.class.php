@@ -51,7 +51,7 @@ EOF;
     $this->logSection('doctrine', 'generating form classes');
     $databaseManager = $this->initDBM();
     $generatorManager = new sfGeneratorManager($this->configuration);
-    $generatorManager->generate('sfDoctrineFormGenerator', array(
+    $generatorManager->generate('sfDoctrine2FormGenerator', array(
       'database_manager' => $databaseManager,
     ));
 

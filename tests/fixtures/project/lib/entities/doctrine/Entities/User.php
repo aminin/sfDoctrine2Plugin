@@ -2,9 +2,9 @@
 
 namespace Entities;
 
-use sfDoctrineActiveEntity;
+use sfDoctrine2ActiveEntity;
 
-class User extends sfDoctrineActiveEntity
+class User extends sfDoctrine2ActiveEntity
 {
   protected $id;
   protected $isActive;
