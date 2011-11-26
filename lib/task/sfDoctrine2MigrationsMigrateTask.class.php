@@ -12,13 +12,13 @@
 require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
- * Update version table
+ * Migrate
  *
  * @package    symfony
  * @subpackage doctrine
  * @author     Maxim Oleinik <maxim.oleinik@gmail.com>
  */
-class sfDoctrineMigrationsVersionTask extends sfDoctrineMigrationsBaseTask
+class sfDoctrine2MigrationsMigrateTask extends sfDoctrine2MigrationsBaseTask
 {
     /**
      * @see sfTask
@@ -30,7 +30,7 @@ class sfDoctrineMigrationsVersionTask extends sfDoctrineMigrationsBaseTask
           new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'dev'),
         ));
 
-        $this->task = new \Doctrine\DBAL\Migrations\Tools\Console\Command\VersionCommand();
+        $this->task = new \Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand();
         $this->importTaskDefinition($this->task);
 
         $this->namespace = $this->task->getNamespace();

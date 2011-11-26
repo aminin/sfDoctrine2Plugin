@@ -16,9 +16,8 @@ require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
  * @package    symfony
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfDoctrineGenerateModuleForRouteTask.class.php 12161 2008-10-13 07:42:25Z fabien $
  */
-class sfDoctrineGenerateModuleForRouteTask extends sfDoctrine2BaseTask
+class sfDoctrine2GenerateModuleForRouteTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -77,7 +76,7 @@ EOF;
     $model = $routeOptions['model'];
 
     // execute the doctrine2:generate-module task
-    $task = new sfDoctrineGenerateModuleTask($this->dispatcher, $this->formatter);
+    $task = new sfDoctrine2GenerateModuleTask($this->dispatcher, $this->formatter);
     $task->setCommandApplication($this->commandApplication);
     $task->setConfiguration($this->configuration);
 

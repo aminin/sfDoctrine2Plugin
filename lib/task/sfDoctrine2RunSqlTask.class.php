@@ -12,14 +12,13 @@
 require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
- * Run DQL query task
+ * Run SQL query task
  *
  * @package    symfony
  * @subpackage doctrine
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineRunDqlTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineRunDqlTask extends sfDoctrine2BaseTask
+class sfDoctrine2RunSqlTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -29,22 +28,20 @@ class sfDoctrineRunDqlTask extends sfDoctrine2BaseTask
     $this->addOptions(array(
       new sfCommandOption('application', null, sfCommandOption::PARAMETER_OPTIONAL, 'The application name', true),
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'dev'),
-      new sfCommandOption('dql', null, sfCommandOption::PARAMETER_REQUIRED, 'The SQL query to execute'),
+      new sfCommandOption('sql', null, sfCommandOption::PARAMETER_REQUIRED, 'The SQL query to execute'),
       new sfCommandOption('file', null, sfCommandOption::PARAMETER_REQUIRED, 'The path to a SQL file to execute'),
       new sfCommandOption('depth', null, sfCommandOption::PARAMETER_REQUIRED, 'The depth to allow the data to output to'),
-      new sfCommandOption('limit', null, sfCommandOption::PARAMETER_REQUIRED, 'Limit the returned results'),
-      new sfCommandOption('hydrate', null, sfCommandOption::PARAMETER_OPTIONAL, 'The hydration mode (object/array/scalar)', "object"),
     ));
 
     $this->aliases = array();
     $this->namespace = 'doctrine2';
-    $this->name = 'run-dql';
-    $this->briefDescription = 'Execute a DQL query';
+    $this->name = 'run-sql';
+    $this->briefDescription = 'Execute a SQL query or a file of SQL queries';
 
     $this->detailedDescription = <<<EOF
-The [doctrine2:run-dql|INFO] task executes a DQL:
+The [doctrine2:run-sql|INFO] task executes a SQL query or a file of SQL queries:
 
-  [./symfony doctrine2:run-dql --dql="SELECT u FROM User u"|INFO]
+  [./symfony doctrine2:run-sql --sql="SELECT * FROM users"|INFO]
 
 EOF;
   }
@@ -55,26 +52,18 @@ EOF;
   protected function execute($arguments = array(), $options = array())
   {
     $args = array();
-    if (isset($options['dql']))
-    {
-      $args[] = '--dql='.$options['dql'];
-    }
 
     if (isset($options['depth']))
     {
       $args[] = '--depth='.$options['depth'];
     }
 
-    if (isset($options["limit"]))
+    if (isset($options['sql']))
     {
-      $args[] = '--limit='.$options["limit"];
+      $args[] = '"' . $options['sql'] . '"';
     }
 
-    if (isset($options["hydrate"]))
-    {
-      $args[] = '--hydrate='.$options["hydrate"];
-    }
 
-    $this->callDoctrineCli('orm:run-dql', $args);
+    $this->callDoctrineCli('dbal:run-sql', $args);
   }
 }

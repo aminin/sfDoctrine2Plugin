@@ -18,9 +18,8 @@ require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
  * @subpackage task
  * @author     Kris Wallsmith <kris.wallsmith@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineBuildTask.class.php 21403 2009-08-24 17:45:19Z Kris.Wallsmith $
  */
-class sfDoctrineBuildTask extends sfDoctrine2BaseTask
+class sfDoctrine2BuildTask extends sfDoctrine2BaseTask
 {
   const
     BUILD_MODEL   = 1,
@@ -124,7 +123,7 @@ EOF;
 
     if (self::BUILD_DB == (self::BUILD_DB & $mode))
     {
-      $task = new sfDoctrineDropDbTask($this->dispatcher, $this->formatter);
+      $task = new sfDoctrine2DropDbTask($this->dispatcher, $this->formatter);
       $task->setCommandApplication($this->commandApplication);
       $task->setConfiguration($this->configuration);
       $ret = $task->run(array(), array('no-confirmation' => $options['no-confirmation']));
@@ -134,7 +133,7 @@ EOF;
         return $ret;
       }
 
-      $task = new sfDoctrineCreateDbTask($this->dispatcher, $this->formatter);
+      $task = new sfDoctrine2CreateDbTask($this->dispatcher, $this->formatter);
       $task->setCommandApplication($this->commandApplication);
       $task->setConfiguration($this->configuration);
       $ret = $task->run();
@@ -149,7 +148,7 @@ EOF;
 
     if (self::BUILD_MODEL == (self::BUILD_MODEL & $mode))
     {
-      $task = new sfDoctrineBuildModelTask($this->dispatcher, $this->formatter);
+      $task = new sfDoctrine2BuildModelTask($this->dispatcher, $this->formatter);
       $task->setCommandApplication($this->commandApplication);
       $task->setConfiguration($this->configuration);
       $ret = $task->run();
@@ -162,7 +161,7 @@ EOF;
 
     if (self::BUILD_FORMS == (self::BUILD_FORMS & $mode))
     {
-      $task = new sfDoctrineBuildFormsTask($this->dispatcher, $this->formatter);
+      $task = new sfDoctrine2BuildFormsTask($this->dispatcher, $this->formatter);
       $task->setCommandApplication($this->commandApplication);
       $task->setConfiguration($this->configuration);
       $ret = $task->run();
@@ -175,7 +174,7 @@ EOF;
 
     if (self::BUILD_FILTERS == (self::BUILD_FILTERS & $mode))
     {
-      $task = new sfDoctrineBuildFiltersTask($this->dispatcher, $this->formatter);
+      $task = new sfDoctrine2BuildFiltersTask($this->dispatcher, $this->formatter);
       $task->setCommandApplication($this->commandApplication);
       $task->setConfiguration($this->configuration);
       $ret = $task->run();
@@ -188,7 +187,7 @@ EOF;
 
     if (self::BUILD_DB == (self::BUILD_DB & $mode))
     {
-      $task = new sfDoctrineCreateSchemaTask($this->dispatcher, $this->formatter);
+      $task = new sfDoctrine2CreateSchemaTask($this->dispatcher, $this->formatter);
       $task->setCommandApplication($this->commandApplication);
       $task->setConfiguration($this->configuration);
       $ret = $task->run(array(), array('dump-sql' => $options['dump-sql']));
@@ -201,7 +200,7 @@ EOF;
 
     if (isset($options['and-update-schema']) && $options['and-update-schema'])
     {
-      $task = new sfDoctrineUpdateSchemaTask($this->dispatcher, $this->formatter);
+      $task = new sfDoctrine2UpdateSchemaTask($this->dispatcher, $this->formatter);
       $task->setCommandApplication($this->commandApplication);
       $task->setConfiguration($this->configuration);
       $task->run(array(), array('dump-sql' => $options['dump-sql']));
@@ -209,7 +208,7 @@ EOF;
 
     if (count($options['and-load']) || count($options['and-append']))
     {
-      $task = new sfDoctrineLoadDataFixturesTask($this->dispatcher, $this->formatter);
+      $task = new sfDoctrine2LoadDataFixturesTask($this->dispatcher, $this->formatter);
       $task->setCommandApplication($this->commandApplication);
       $task->setConfiguration($this->configuration);
 

@@ -18,7 +18,7 @@ require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
  * @subpackage doctrine
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  */
-class sfDoctrineConvertMappingTask extends sfDoctrine2BaseTask
+class sfDoctrine2ConvertMappingTask extends sfDoctrine2BaseTask
 {
     /**
      * @see sfTask

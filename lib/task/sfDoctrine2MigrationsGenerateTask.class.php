@@ -12,25 +12,20 @@
 require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
- * Show current migration status
+ * Generate migration class
  *
  * @package    symfony
  * @subpackage doctrine
  * @author     Maxim Oleinik <maxim.oleinik@gmail.com>
  */
-class sfDoctrineMigrationsStatusTask extends sfDoctrineMigrationsBaseTask
+class sfDoctrine2MigrationsGenerateTask extends sfDoctrine2MigrationsBaseTask
 {
     /**
      * @see sfTask
      */
     protected function configure()
     {
-        // Options
-        $this->addOptions(array(
-          new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'dev'),
-        ));
-
-        $this->task = new \Doctrine\DBAL\Migrations\Tools\Console\Command\StatusCommand();
+        $this->task = new \Doctrine\DBAL\Migrations\Tools\Console\Command\GenerateCommand();
         $this->importTaskDefinition($this->task);
 
         $this->namespace = $this->task->getNamespace();

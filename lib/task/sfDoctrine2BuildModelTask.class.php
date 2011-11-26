@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @author     Jonathan H. Wage <jonwage@gmail.com>
  */
-class sfDoctrineBuildModelTask extends sfDoctrine2BaseTask
+class sfDoctrine2BuildModelTask extends sfDoctrine2BaseTask
 {
     /**
      * @see sfTask

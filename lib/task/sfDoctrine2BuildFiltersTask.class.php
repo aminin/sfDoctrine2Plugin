@@ -16,9 +16,8 @@ require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
  * @package    symfony
  * @subpackage doctrine
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfDoctrineBuildFiltersTask.class.php 12537 2008-11-01 14:43:27Z fabien $
  */
-class sfDoctrineBuildFiltersTask extends sfDoctrine2BaseTask
+class sfDoctrine2BuildFiltersTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask

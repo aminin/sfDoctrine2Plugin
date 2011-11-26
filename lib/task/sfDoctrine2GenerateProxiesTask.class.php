@@ -12,14 +12,14 @@
 require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
- * Check Doctrine version task
+ * Generate Doctrine proxy classes
  *
  * @package    symfony
  * @subpackage doctrine
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineVersionTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
+ * @author     Russell Flynn <russ@eatmymonkeydust.com>
  */
-class sfDoctrineVersionTask extends sfDoctrine2BaseTask
+class sfDoctrine2GenerateProxiesTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -28,13 +28,13 @@ class sfDoctrineVersionTask extends sfDoctrine2BaseTask
   {
     $this->aliases = array();
     $this->namespace = 'doctrine2';
-    $this->name = 'version';
-    $this->briefDescription = 'Check which version of Doctrine you are using';
+    $this->name = 'generate-proxies';
+    $this->briefDescription = 'Generate the Doctrine proxy classes';
 
     $this->detailedDescription = <<<EOF
-The [doctrine2:version|INFO] outputs which version of Doctrine you are using:
+The [doctrine2:version|INFO] generates the Doctrine proxy clases using your configured proxy directory
 
-  [./symfony doctrine2:version|INFO]
+  [./symfony doctrine2:generate-proxies|INFO]
 
 EOF;
   }
@@ -44,6 +44,7 @@ EOF;
    */
   protected function execute($arguments = array(), $options = array())
   {
-    $this->callDoctrineCli('--version');
+    $arguments = array('dest-path' => sfConfig::get('sf_generator_proxy_dir'));
+    $this->callDoctrineCli('orm:generate-proxies', $arguments);
   }
 }

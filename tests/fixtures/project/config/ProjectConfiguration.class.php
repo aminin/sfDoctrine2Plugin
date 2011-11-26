@@ -22,7 +22,7 @@ class ProjectConfiguration extends sfProjectConfiguration
   public function initializeDoctrine($fixtures = false)
   {
     chdir(sfConfig::get('sf_root_dir'));
-    $task = new sfDoctrineBuildTask($this->dispatcher, new sfFormatter());
+    $task = new sfDoctrine2BuildTask($this->dispatcher, new sfFormatter());
     $task->setConfiguration($this);
 
     $options = array('db', 'no-confirmation');

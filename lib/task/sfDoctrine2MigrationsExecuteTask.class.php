@@ -12,13 +12,13 @@
 require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
- * Migrate
+ * Task for executing single migrations up or down manually.
  *
  * @package    symfony
  * @subpackage doctrine
  * @author     Maxim Oleinik <maxim.oleinik@gmail.com>
  */
-class sfDoctrineMigrationsMigrateTask extends sfDoctrineMigrationsBaseTask
+class sfDoctrine2MigrationsExecuteTask extends sfDoctrine2MigrationsBaseTask
 {
     /**
      * @see sfTask
@@ -30,7 +30,7 @@ class sfDoctrineMigrationsMigrateTask extends sfDoctrineMigrationsBaseTask
           new sfCommandOption('env', null, sfCommandOption::PARAMETER_REQUIRED, 'The environment', 'dev'),
         ));
 
-        $this->task = new \Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand();
+        $this->task = new \Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand();
         $this->importTaskDefinition($this->task);
 
         $this->namespace = $this->task->getNamespace();

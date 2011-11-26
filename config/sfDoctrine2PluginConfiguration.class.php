@@ -38,8 +38,8 @@ class sfDoctrine2PluginConfiguration extends sfPluginConfiguration
 
     if (sfConfig::get('sf_web_debug'))
     {
-      require_once __DIR__.'/../lib/debug/sfWebDebugPanelDoctrine.class.php';
-      $this->dispatcher->connect('debug.web.load_panels', array('sfWebDebugPanelDoctrine', 'listenToAddPanelEvent'));
+      require_once __DIR__.'/../lib/debug/sfWebDebugPanelDoctrine2.class.php';
+      $this->dispatcher->connect('debug.web.load_panels', array('sfWebDebugPanelDoctrine2', 'listenToAddPanelEvent'));
     }
 
     // Autoloading

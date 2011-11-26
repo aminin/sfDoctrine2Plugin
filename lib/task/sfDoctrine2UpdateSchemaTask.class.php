@@ -12,14 +12,13 @@
 require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
 
 /**
- * Drop schema task
+ * Update schema task
  *
  * @package    symfony
  * @subpackage doctrine
  * @author     Jonathan H. Wage <jonwage@gmail.com>
- * @version    SVN: $Id: sfDoctrineDropSchemaTask.class.php 15865 2009-02-28 03:34:26Z Jonathan.Wage $
  */
-class sfDoctrineDropSchemaTask extends sfDoctrine2BaseTask
+class sfDoctrine2UpdateSchemaTask extends sfDoctrine2BaseTask
 {
   /**
    * @see sfTask
@@ -34,15 +33,15 @@ class sfDoctrineDropSchemaTask extends sfDoctrine2BaseTask
 
     $this->aliases = array();
     $this->namespace = 'doctrine2';
-    $this->name = 'drop-schema';
-    $this->briefDescription = 'Drop schema for current model';
+    $this->name = 'update-schema';
+    $this->briefDescription = 'Update schema for current model';
 
     $this->detailedDescription = <<<EOF
-The [doctrine2:drop-schema|INFO] drops schema for the current model:
+The [doctrine2:update-schema|INFO] updates schema for the current model:
 
-  [./symfony doctrine2:drop-schema|INFO]
+  [./symfony doctrine2:update-schema|INFO]
 
-The task connects to the database and drops all the tables for your schema.
+The task connects to the database and updates all the tables for your schema.
 EOF;
   }
 
@@ -54,6 +53,6 @@ EOF;
     $keys = array('dump-sql');
     $args = $this->prepareDoctrineCliArguments($options, $keys);
 
-    return $this->callDoctrineCli('orm:schema-tool:drop', $args);
+    return $this->callDoctrineCli('orm:schema-tool:update', $args);
   }
 }

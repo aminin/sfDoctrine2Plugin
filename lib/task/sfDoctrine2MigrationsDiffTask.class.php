@@ -19,7 +19,7 @@ require_once(dirname(__FILE__).'/sfDoctrine2BaseTask.class.php');
  * @subpackage doctrine
  * @author     Maxim Oleinik <maxim.oleinik@gmail.com>
  */
-class sfDoctrineMigrationsDiffTask extends sfDoctrineMigrationsBaseTask
+class sfDoctrine2MigrationsDiffTask extends sfDoctrine2MigrationsBaseTask
 {
     /**
      * @see sfTask
