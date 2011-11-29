@@ -41,11 +41,11 @@ class sfDoctrine2Database extends sfDatabase
     if ($schema) {
       $paths[] = $schema;
     } else {
-      $paths[] = sfConfig::get('sf_config_dir') . '/doctrine';
+      $paths[] = sfConfig::get('sf_config_dir') . '/doctrine2';
     }
 
-    $paths[] = realpath(__DIR__ . '/../config/doctrine');
-    $paths[] = realpath(sfConfig::get('sf_config_dir').'/doctrine');
+    $paths[] = realpath(__DIR__ . '/../config/doctrine2');
+    $paths[] = realpath(sfConfig::get('sf_config_dir').'/doctrine2');
 
     $enabledPlugins = $configuration->getPlugins();
     foreach ($configuration->getAllPluginPaths() as $plugin => $path)
@@ -54,9 +54,9 @@ class sfDoctrine2Database extends sfDatabase
       {
         continue;
       }
-      $pluginPath = $path.'/config/doctrine';
+      $pluginPath = $path.'/config/doctrine2';
       if (is_dir($pluginPath)) {
-          $paths[] = $path.'/config/doctrine';
+          $paths[] = $path.'/config/doctrine2';
       }
     }
     $paths = array_unique($paths);
@@ -71,12 +71,12 @@ class sfDoctrine2Database extends sfDatabase
       $config->setSqlLogger(new sfDoctrine2SqlLogger($configuration->getEventDispatcher()));
     }
 
-    $method = sprintf('configureDoctrineConnection%s', $connectionName);
+    $method = sprintf('configureDoctrine2Connection%s', $connectionName);
     $methodExists = method_exists($configuration, $method);
 
-    if (method_exists($configuration, 'configureDoctrineConnection') && !$methodExists)
+    if (method_exists($configuration, 'configureDoctrine2Connection') && !$methodExists)
     {
-      $configuration->configureDoctrineConnection($config);
+      $configuration->configureDoctrine2Connection($config);
     } else if ($methodExists) {
       $configuration->$method($config);
     }

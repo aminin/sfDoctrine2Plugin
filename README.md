@@ -61,10 +61,11 @@ Sample `databases.yml` for Sqlite:
 
 ## Schema Files
 
-You can specify your schema files in `config/doctrine` just like normal. The schema syntax
+You can specify your schema files in `config/doctrine2` just like normal. The schema syntax
 is slightly different from Doctrine 1. Below is an example:
 
     [yml]
+    # Entities.User.dcm.yml
     Entities\User:
       type: entity
       table: user

@@ -141,7 +141,7 @@ class sfDoctrine2FormGenerator extends sfGenerator
 
       if ($isPluginModel)
       {
-        $path = $pluginPaths[$pluginName].'/lib/form/doctrine/Plugin'.$this->formName.'Form.php';
+        $path = $pluginPaths[$pluginName].'/lib/form/doctrine2/Plugin'.$this->formName.'Form.php';
         if (!file_exists($path))
         {
           $dir = dirname($path);
@@ -192,7 +192,7 @@ class sfDoctrine2FormGenerator extends sfGenerator
           continue;
         }
 
-        foreach (sfFinder::type('file')->name('*.php')->in($path.'/lib/model/doctrine') as $path)
+        foreach (sfFinder::type('file')->name('*.php')->in($path.'/lib/model/doctrine2') as $path)
         {
           $info = pathinfo($path);
           $e = explode('.', $info['filename']);

@@ -1,4 +1,4 @@
 name:                 sfDoctrine2Plugin
 migrations_namespace: Migration
 table_name:           migration_versions
-migrations_directory: lib/migration/doctrine
+migrations_directory: lib/migration/doctrine2

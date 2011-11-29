@@ -57,12 +57,12 @@ class sfDoctrine2FormFilterGenerator extends sfDoctrine2FormGenerator
     $metadatas = $this->loadMetadatas();
 
     // create the project base class for all forms
-    $file = sfConfig::get('sf_lib_dir').'/filter/doctrine/BaseFormFilterDoctrine2.class.php';
+    $file = sfConfig::get('sf_lib_dir').'/filter/doctrine2/BaseFormFilterDoctrine2.class.php';
     if (!file_exists($file))
     {
-      if (!is_dir(sfConfig::get('sf_lib_dir').'/filter/doctrine/base'))
+      if (!is_dir(sfConfig::get('sf_lib_dir').'/filter/doctrine2/base'))
       {
-        mkdir(sfConfig::get('sf_lib_dir').'/filter/doctrine/base', 0777, true);
+        mkdir(sfConfig::get('sf_lib_dir').'/filter/doctrine2/base', 0777, true);
       }
 
       file_put_contents($file, $this->evalTemplate('sfDoctrineFormFilterBaseTemplate.php'));
@@ -77,7 +77,7 @@ class sfDoctrine2FormFilterGenerator extends sfDoctrine2FormGenerator
       $this->modelName = $metadata->name;
 			$this->formName = str_replace('\\', '', $this->modelName);
 
-      $baseDir = sfConfig::get('sf_lib_dir') . '/filter/doctrine';
+      $baseDir = sfConfig::get('sf_lib_dir') . '/filter/doctrine2';
 
       $isPluginModel = $this->isPluginModel($metadata->name);
       if ($isPluginModel)
@@ -101,7 +101,7 @@ class sfDoctrine2FormFilterGenerator extends sfDoctrine2FormGenerator
 
       if ($isPluginModel)
       {
-        $path = $pluginPaths[$pluginName].'/lib/filter/doctrine/Plugin'.$this->modelName.'FormFilter.class.php';
+        $path = $pluginPaths[$pluginName].'/lib/filter/doctrine2/Plugin'.$this->modelName.'FormFilter.class.php';
         $path = str_replace('\\', '', $path);
         if (!file_exists($path))
         {

@@ -22,13 +22,13 @@ class sfDoctrine2PluginConfiguration extends sfPluginConfiguration
 
   public function initialize()
   {
-    sfConfig::set('sf_orm', 'doctrine');
+    sfConfig::set('sf_orm', 'doctrine2');
 
     // Generator config
     // Do not overwrite user defined values
     sfConfig::set('sf_generator_proxy_dir', sfConfig::get('sf_generator_proxy_dir', sfConfig::get('sf_lib_dir').'/Proxy'));
     sfConfig::set('sf_generator_proxy_ns',  sfConfig::get('sf_generator_proxy_ns', 'Proxy'));
-    sfConfig::set('sf_generator_form_dir',  sfConfig::get('sf_generator_form_dir', sfConfig::get('sf_lib_dir').'/form/doctrine'));
+    sfConfig::set('sf_generator_form_dir',  sfConfig::get('sf_generator_form_dir', sfConfig::get('sf_lib_dir').'/form/doctrine2'));
     sfConfig::set('sf_generator_form_ns',   sfConfig::get('sf_generator_form_ns', ''));
 
     if (!sfConfig::get('sf_admin_module_web_dir'))
